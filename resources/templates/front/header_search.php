@@ -1,6 +1,4 @@
-<div class="body__overlay"></div>
-<!-- Start Offset Wrapper -->
-<div class="offset__wrapper">
+
     <!-- Start Search Popap -->
     <div class="search__area">
         <div class="container" >

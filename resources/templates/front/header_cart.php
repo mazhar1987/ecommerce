@@ -47,5 +47,3 @@
     </div>
 </div>
 <!-- End Cart Panel -->
-</div>
-<!-- End Offset Wrapper -->
