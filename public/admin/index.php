@@ -1,7 +1,9 @@
 <?php
-include_once "includes/admin_header.php";
-include_once "includes/admin_sidebar.php";
-include_once "includes/admin_topbar.php";
+require_once('../../resources/config.php');
+
+include_once(TEMPLATE_BACK . DS . "admin_header.php");
+include_once(TEMPLATE_BACK . DS .  "admin_sidebar.php");
+include_once(TEMPLATE_BACK . DS .  "admin_topbar.php");
 ?>
 
 
@@ -18,4 +20,4 @@ include_once "includes/admin_topbar.php";
       </div>
       <!-- End of Main Content -->
 
-<?php include_once "includes/admin_footer.php"; ?>
+<?php include_once(TEMPLATE_BACK . DS .  "admin_footer.php"); ?>
