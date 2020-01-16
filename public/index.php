@@ -2,12 +2,7 @@
 require_once('../resources/config.php');
 
 include_once(TEMPLATE_FRONT . DS . 'header.php');
-include_once(TEMPLATE_FRONT . DS . 'topnav.php');
-
-
-
-
-
+include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 ?>
 
 <div class="body__overlay"></div>
@@ -29,6 +24,5 @@ include_once(TEMPLATE_FRONT . DS . 'home_testimonial.php');
 include_once(TEMPLATE_FRONT . DS . 'home_top_rated.php');
 include_once(TEMPLATE_FRONT . DS . 'home_brand.php');
 include_once(TEMPLATE_FRONT . DS . 'home_blog.php');
+include_once(TEMPLATE_FRONT . DS . 'footer.php');
 ?>
-
-<?php include_once(TEMPLATE_FRONT . DS . 'footer.php'); ?>
