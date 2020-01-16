@@ -20,14 +20,10 @@
                                     <a href="#">Categories</a>
                                     <ul class="dropdown">
                                         <?php
-                                            $cat_query = "SELECT * FROM categories";
-                                            $send_query = mysqli_query($connect, $cat_query);
+                                            $cat_query = query("SELECT * FROM categories");
+                                            confirm($cat_query);
 
-                                            if (!$send_query) {
-                                                die('Query Failed! ' . mysqli_error($connect));
-                                            }
-
-                                            while ($row = mysqli_fetch_array($send_query)) {
+                                            while ($row = fetch_array($cat_query)) {
                                                 echo "<li><a href='#'>{$row['cat_name']}</a></li>";
                                             }
                                         ?>
