@@ -64,6 +64,37 @@ function get_products()
 
     while($row = mysqli_fetch_array($product_query))
     {
-        echo $row['product_price'];
+        $product = <<<DELIMETER
+        <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+            <div class="category">
+                <div class="ht__cat__thumb">
+                    <a href="product-details.html">
+                        <img src="{$row['product_image']}" alt="{$row['product_name']}">
+                    </a>
+                </div>
+                <div class="fr__hover__info">
+                    <ul class="product__action">
+                        <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+
+                        <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
+
+                        <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
+                    </ul>
+                </div>
+                <div class="fr__product__inner">
+                    <h4><a href="product-details.html">{$row['product_name']}</a></h4>
+                    <p>{$row['product_des']}</p>
+                    <ul class="fr__pro__prize">
+                        <li class="old__prize">{$row['product_old_price']}</li>
+                        <li>{$row['product_price']}</li>
+                    </ul>
+                    <a href="#" class="btn btn-info" style="margin-top: 8px;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        DELIMETER;
+
+        echo $product;
+
     }
 }
