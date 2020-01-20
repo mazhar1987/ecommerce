@@ -17,6 +17,9 @@ include_once(TEMPLATE_FRONT . DS . 'header_cart.php');
 
 <?php
 include_once(TEMPLATE_FRONT . DS . 'home_slider.php');
+
+get_products();
+
 include_once(TEMPLATE_FRONT . DS . 'home_new_arrival.php');
 include_once(TEMPLATE_FRONT . DS . 'home_cta.php');
 include_once(TEMPLATE_FRONT . DS . 'home_best_seller.php');

@@ -49,3 +49,21 @@ function fetch_array($result)
 {
     return mysqli_fetch_array($result);
 }
+
+/*
+ * =======================
+ * Get Products Function
+ * =======================
+ */
+
+function get_products()
+{
+
+    $product_query = query("SELECT * FROM products");
+    confirm($product_query);
+
+    while($row = mysqli_fetch_array($product_query))
+    {
+        echo $row['product_price'];
+    }
+}
