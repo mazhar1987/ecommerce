@@ -68,7 +68,7 @@ function get_products()
         <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
             <div class="category">
                 <div class="ht__cat__thumb">
-                    <a href="product-details.html">
+                    <a href="product-details.php?id={$row['product_id']}">
                         <img src="{$row['product_image']}" alt="{$row['product_name']}">
                     </a>
                 </div>
@@ -82,13 +82,12 @@ function get_products()
                     </ul>
                 </div>
                 <div class="fr__product__inner">
-                    <h4><a href="product-details.html">{$row['product_name']}</a></h4>
+                    <h4><a href="product-details.php?id={$row['product_id']}">{$row['product_name']}</a></h4>
                     <p>{$row['product_des']}</p>
                     <ul class="fr__pro__prize">
-                        <li class="old__prize">{$row['product_old_price']}</li>
-                        <li>{$row['product_price']}</li>
+                        <li class="old__prize">&#36;{$row['product_old_price']}</li>
+                        <li>&#36;{$row['product_price']}</li>
                     </ul>
-                    <a href="#" class="btn btn-info" style="margin-top: 8px;">Add to Cart</a>
                 </div>
             </div>
         </div>
