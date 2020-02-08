@@ -1,55 +1,30 @@
-<!-- Start Slider Area -->
-<div class="slider__container slider--one bg__cat--3">
-    <div class="slide__container slider__activation__wrap owl-carousel">
-        <!-- Start Single Slide -->
-        <div class="single__slide animation__style01 slider__fixed--height">
-            <div class="container">
-                <div class="row align-items__center">
-                    <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
-                        <div class="slide">
-                            <div class="slider__inner">
-                                <h2>collection 2018</h2>
-                                <h1>NICE CHAIR</h1>
-                                <div class="cr__btn">
-                                    <a href="cart.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
-                        <div class="slide__thumb">
-                            <img src="images/slider/fornt-img/1.png" alt="slider images">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Single Slide -->
+<div class="row carousel-holder">
 
-        <!-- Start Single Slide -->
-        <div class="single__slide animation__style01 slider__fixed--height">
-            <div class="container">
-                <div class="row align-items__center">
-                    <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
-                        <div class="slide">
-                            <div class="slider__inner">
-                                <h2>collection 2018</h2>
-                                <h1>NICE CHAIR</h1>
-                                <div class="cr__btn">
-                                    <a href="cart.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
-                        <div class="slide__thumb">
-                            <img src="images/slider/fornt-img/2.png" alt="slider images">
-                        </div>
-                    </div>
+    <div class="col-md-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
                 </div>
             </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
         </div>
-        <!-- End Single Slide -->
     </div>
+
 </div>
-<!-- Start Slider Area -->

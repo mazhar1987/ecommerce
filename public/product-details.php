@@ -5,237 +5,171 @@ include_once(TEMPLATE_FRONT . DS . 'header.php');
 include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 ?>
 
-        <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
-        <div class="offset__wrapper">
-        <?php
-            include_once(TEMPLATE_FRONT . DS . 'header_search.php');
-            include_once(TEMPLATE_FRONT . DS . 'header_cart.php');
-        ?>
+    <!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <?php include_once(TEMPLATE_FRONT . DS . 'left_sidebar.php'); ?>
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-7">
+                    <img class="img-responsive" src="http://placehold.it/700x600" alt="">
+                </div>
+
+                <div class="col-md-5">
+                    <div class="thumbnail">
+                        <div class="caption-full">
+                            <h4><a href="#">Javascript Course</a> </h4>
+                            <hr>
+                            <h4 class="">$24.99</h4>
+                            <div class="ratings">
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    4.0 stars
+                                </p>
+                            </div>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+                            <form action="">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="ADD TO CART">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Row For Image and Short Description-->
+
+            <hr>
+
+            <!--Row for Tab Panel-->
+
+            <div class="row">
+                <div role="tabpanel">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
+
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+
+                            <p></p>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+
+                            <div class="col-md-6">
+
+                                <h3>2 Reviews From </h3>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        Anonymous
+                                        <span class="pull-right">10 days ago</span>
+                                        <p>This product was great in terms of quality. I would definitely buy another!</p>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        Anonymous
+                                        <span class="pull-right">12 days ago</span>
+                                        <p>I've alredy ordered another one!</p>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        Anonymous
+                                        <span class="pull-right">15 days ago</span>
+                                        <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <h3>Add A review</h3>
+
+                                <form action="" class="form-inline">
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="test" class="form-control">
+                                    </div>
+
+                                    <div>
+                                        <h3>Your Rating</h3>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="form-group">
+                                        <textarea name="" id="" cols="60" rows="10" class="form-control"></textarea>
+                                    </div>
+
+                                    <br>
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" value="SUBMIT">
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- End Offset Wrapper -->
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
-        <?php include_once(TEMPLATE_FRONT . DS . 'breadcrumbs.php'); ?>
-        </div>
-        <!-- End Bradcaump area -->
-        <!-- Start Product Details Area -->
-        <section class="htc__product__details bg__white ptb--100">
-            <!-- Start Product Details Top -->
-            <div class="htc__product__details__top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
-                            <div class="htc__product__details__tab__content">
-                                <!-- Start Product Big Images -->
-                                <div class="product__big__images">
-                                    <div class="portfolio-full-image tab-content">
-                                        <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
-                                            <img src="images/product-2/big-img/1.jpg" alt="full-image">
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="img-tab-2">
-                                            <img src="images/product-2/big-img/2.jpg" alt="full-image">
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="img-tab-3">
-                                            <img src="images/product-2/big-img/3.jpg" alt="full-image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Product Big Images -->
-                                <!-- Start Small images -->
-                                <ul class="product__small__images" role="tablist">
-                                    <li role="presentation" class="pot-small-img active">
-                                        <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                            <img src="images/product-2/sm-img-3/3.jpg" alt="small-image">
-                                        </a>
-                                    </li>
-                                    <li role="presentation" class="pot-small-img">
-                                        <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                            <img src="images/product-2/sm-img-3/1.jpg" alt="small-image">
-                                        </a>
-                                    </li>
-                                    <li role="presentation" class="pot-small-img">
-                                        <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                            <img src="images/product-2/sm-img-3/2.jpg" alt="small-image">
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- End Small images -->
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
-                            <div class="ht__product__dtl">
-                                <h2>jean shirt to sassy girl</h2>
-                                <h6>Model: <span>MNG001</span></h6>
-                                <ul class="rating">
-                                    <li><i class="icon-star icons"></i></li>
-                                    <li><i class="icon-star icons"></i></li>
-                                    <li><i class="icon-star icons"></i></li>
-                                    <li class="old"><i class="icon-star icons"></i></li>
-                                    <li class="old"><i class="icon-star icons"></i></li>
-                                </ul>
-                                <ul  class="pro__prize">
-                                    <li class="old__prize">$82.5</li>
-                                    <li>$75.2</li>
-                                </ul>
-                                <p class="pro__info">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan</p>
-                                <div class="ht__pro__desc">
-                                    <a href="#" class="btn btn-info" style="margin-bottom: 15px">Add to cart</a>
-                                    <div class="sin__desc">
-                                        <p><span>Availability:</span> In Stock</p>
-                                    </div>
-                                    <div class="sin__desc align--left">
-                                        <p><span>color:</span></p>
-                                        <ul class="pro__color">
-                                            <li class="red"><a href="#">red</a></li>
-                                            <li class="green"><a href="#">green</a></li>
-                                            <li class="balck"><a href="#">balck</a></li>
-                                        </ul>
-                                        <div class="pro__more__btn">
-                                            <a href="#">more</a>
-                                        </div>
-                                    </div>
-                                    <div class="sin__desc align--left">
-                                        <p><span>size</span></p>
-                                        <select class="select__size">
-                                            <option>s</option>
-                                            <option>l</option>
-                                            <option>xs</option>
-                                            <option>xl</option>
-                                            <option>m</option>
-                                            <option>s</option>
-                                        </select>
-                                    </div>
-                                    <div class="sin__desc align--left">
-                                        <p><span>Categories:</span></p>
-                                        <ul class="pro__cat__list">
-                                            <li><a href="#">Fashion,</a></li>
-                                            <li><a href="#">Accessories,</a></li>
-                                            <li><a href="#">Women,</a></li>
-                                            <li><a href="#">Men,</a></li>
-                                            <li><a href="#">Kid,</a></li>
-                                            <li><a href="#">Mobile,</a></li>
-                                            <li><a href="#">Computer,</a></li>
-                                            <li><a href="#">Hair,</a></li>
-                                            <li><a href="#">Clothing,</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sin__desc align--left">
-                                        <p><span>Product tags:</span></p>
-                                        <ul class="pro__cat__list">
-                                            <li><a href="#">Fashion,</a></li>
-                                            <li><a href="#">Accessories,</a></li>
-                                            <li><a href="#">Women,</a></li>
-                                            <li><a href="#">Men,</a></li>
-                                            <li><a href="#">Kid,</a></li>
-                                        </ul>
-                                    </div>
+    </div>
+</div>
 
-                                    <div class="sin__desc product__share__link">
-                                        <p><span>Share this:</span></p>
-                                        <ul class="pro__share">
-                                            <li><a href="#" target="_blank"><i class="icon-social-twitter icons"></i></a></li>
-
-                                            <li><a href="#" target="_blank"><i class="icon-social-instagram icons"></i></a></li>
-
-                                            <li><a href="https://www.facebook.com/Furny/?ref=bookmarks" target="_blank"><i class="icon-social-facebook icons"></i></a></li>
-
-                                            <li><a href="#" target="_blank"><i class="icon-social-google icons"></i></a></li>
-
-                                            <li><a href="#" target="_blank"><i class="icon-social-linkedin icons"></i></a></li>
-
-                                            <li><a href="#" target="_blank"><i class="icon-social-pinterest icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Details Top -->
-        </section>
-        <!-- End Product Details Area -->
-        <!-- Start Product Description -->
-        <section class="htc__produc__decription bg__white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <!-- Start List And Grid View -->
-                        <ul class="pro__details__tab" role="tablist">
-                            <li role="presentation" class="description active"><a href="#description" role="tab" data-toggle="tab">description</a></li>
-                            <li role="presentation" class="review"><a href="#review" role="tab" data-toggle="tab">review</a></li>
-                            <li role="presentation" class="shipping"><a href="#shipping" role="tab" data-toggle="tab">shipping</a></li>
-                        </ul>
-                        <!-- End List And Grid View -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="ht__pro__details__content">
-                            <!-- Start Single Content -->
-                            <div role="tabpanel" id="description" class="pro__single__content tab-pane fade in active">
-                                <div class="pro__tab__content__inner">
-                                    <p>Formfitting clothing is all about a sweet spot. That elusive place where an item is tight but not clingy, sexy but not cloying, cool but not over the top. Alexandra Alvarez’s label, Alix, hits that mark with its range of comfortable, minimal, and neutral-hued bodysuits.</p>
-                                    <h4 class="ht__pro__title">Description</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                    <h4 class="ht__pro__title">Standard Featured</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in</p>
-                                </div>
-                            </div>
-                            <!-- End Single Content -->
-                            <!-- Start Single Content -->
-                            <div role="tabpanel" id="review" class="pro__single__content tab-pane fade">
-                                <div class="pro__tab__content__inner">
-                                    <p>Formfitting clothing is all about a sweet spot. That elusive place where an item is tight but not clingy, sexy but not cloying, cool but not over the top. Alexandra Alvarez’s label, Alix, hits that mark with its range of comfortable, minimal, and neutral-hued bodysuits.</p>
-                                    <h4 class="ht__pro__title">Description</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                    <h4 class="ht__pro__title">Standard Featured</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                                </div>
-                            </div>
-                            <!-- End Single Content -->
-                            <!-- Start Single Content -->
-                            <div role="tabpanel" id="shipping" class="pro__single__content tab-pane fade">
-                                <div class="pro__tab__content__inner">
-                                    <p>Formfitting clothing is all about a sweet spot. That elusive place where an item is tight but not clingy, sexy but not cloying, cool but not over the top. Alexandra Alvarez’s label, Alix, hits that mark with its range of comfortable, minimal, and neutral-hued bodysuits.</p>
-                                    <h4 class="ht__pro__title">Description</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                    <h4 class="ht__pro__title">Standard Featured</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                                </div>
-                            </div>
-                            <!-- End Single Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Product Description -->
-        <!-- Start Product Area -->
-        <section class="htc__product__area--2 pb--100 product-details-res">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section__title--2 text-center">
-                            <h2 class="title__line">New Arrivals</h2>
-                            <p>But I must explain to you how all this mistaken idea</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="product__wrap clearfix">
-                        <?php get_products(); ?>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Product Area -->
-
-<?php
-include_once(TEMPLATE_FRONT . DS . 'home_brand.php');
-include_once(TEMPLATE_FRONT . DS . 'footer.php');
-?>
+<?php include_once(TEMPLATE_FRONT . DS . 'footer.php'); ?>

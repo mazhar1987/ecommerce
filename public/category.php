@@ -1,39 +1,164 @@
-<?php
-require_once('../resources/config.php');
+<!DOCTYPE html>
+<html lang="en">
 
-include_once(TEMPLATE_FRONT . DS . 'header.php');
-include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
-?>
+<head>
 
-        <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
-        <div class="offset__wrapper">
-        <?php
-            include_once(TEMPLATE_FRONT . DS . 'header_search.php');
-            include_once(TEMPLATE_FRONT . DS . 'header_cart.php');
-        ?>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Start Bootstrap</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- End Offset Wrapper -->
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
-            <?php include_once(TEMPLATE_FRONT . DS . 'breadcrumbs.php'); ?>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <header class="jumbotron hero-spacer">
+            <h1>A Warm Welcome!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+            <p><a class="btn btn-primary btn-large">Call to action!</a>
+            </p>
+        </header>
+
+        <hr>
+
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Latest Features</h3>
+            </div>
         </div>
-        <!-- End Bradcaump area -->
-        <!-- Start Product Grid -->
-        <section class="htc__product__grid bg__white ptb--100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 col-lg-push-3 col-md-9 col-md-push-3 col-sm-12 col-xs-12">
-                        <?php include_once(TEMPLATE_FRONT . DS . 'category_products.php'); ?>
-                    </div>
-                    <div class="col-lg-3 col-lg-pull-9 col-md-3 col-md-pull-9 col-sm-12 col-xs-12 smt-40 xmt-40">
-                        <?php include_once(TEMPLATE_FRONT . DS . 'left_sidebar.php'); ?>
+        <!-- /.row -->
+
+        <!-- Page Features -->
+        <div class="row text-center">
+
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Feature Label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Product Grid -->
-<?php
-include_once(TEMPLATE_FRONT . DS . 'home_brand.php');
-include_once(TEMPLATE_FRONT . DS . 'footer.php');
-?></html>
+
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Feature Label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Feature Label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Feature Label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2030</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

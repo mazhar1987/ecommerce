@@ -65,32 +65,30 @@ function get_products()
     while($row = mysqli_fetch_array($product_query))
     {
         $product = <<<DELIMETER
-        <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-            <div class="category">
-                <div class="ht__cat__thumb">
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
                     <a href="product-details.php?id={$row['product_id']}">
                         <img src="{$row['product_image']}" alt="{$row['product_name']}">
-                    </a>
-                </div>
-                <div class="fr__hover__info">
-                    <ul class="product__action">
-                        <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
-
-                        <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
-
-                        <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                    </ul>
-                </div>
-                <div class="fr__product__inner">
-                    <h4><a href="product-details.php?id={$row['product_id']}">{$row['product_name']}</a></h4>
-                    <p>{$row['product_des']}</p>
-                    <ul class="fr__pro__prize">
-                        <li class="old__prize">&#36;{$row['product_old_price']}</li>
-                        <li>&#36;{$row['product_price']}</li>
-                    </ul>
+                    </a>                    
+                    <div class="caption">
+                        <h4><a href="product-details.php?id={$row['product_id']}">{$row['product_name']}</a></h4>
+                        <span class="label label-default pull-left">&#36;{$row['product_old_price']}</span>
+                        <span class="label label-danger pull-right">&#36;{$row['product_price']}</span>
+                        <br>
+                        <p>{$row['product_des']}</p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">6 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
         DELIMETER;
 
         echo $product;
