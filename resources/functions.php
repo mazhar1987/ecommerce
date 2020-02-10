@@ -87,6 +87,10 @@ function get_products()
                             <span class="glyphicon glyphicon-star-empty"></span>
                         </p>
                     </div>
+                    <div class="action" style="display: inline-block;width: 100%;padding-left: 8px;padding-right: 8px;">
+                        <a href="product-details.php?id={$row['product_id']}" target="_blank" class="btn btn-primary pull-left">View Details</a>
+                        <a href="#" class="btn btn-danger pull-right">Add to cart</a>
+                    </div>
                 </div>
             </div>
         DELIMETER;
@@ -94,4 +98,25 @@ function get_products()
         echo $product;
 
     }
+}/*
+ * =======================
+ * Get Categories
+ * =======================
+ */
+
+function get_categories()
+{
+
+    $cat_query = query("SELECT * FROM categories");
+    confirm($cat_query);
+
+    while ($row = fetch_array($cat_query)) {
+
+        $categories = <<<DELIMETER
+            <a class='list-group-item' href='category.php?id={$row['cat_id']}'>{$row['cat_name']}</a>
+        DELIMETER;
+
+        echo $categories;
+    }
+
 }
