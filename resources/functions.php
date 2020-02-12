@@ -128,6 +128,34 @@ function get_products_in_category_page()
 
     }
 }
+function get_products_in_shop_page()
+{
+
+    $get_shop_product_query = query("SELECT * FROM products");
+    confirm($get_shop_product_query);
+
+    while($row = mysqli_fetch_array($get_shop_product_query))
+    {
+        $shop_product = <<<DELIMETER
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="{$row['product_image']}" alt="{$row['product_name']}">
+                    <div class="caption">
+                        <h4>{$row['product_name']}</h4>
+                        <p>{$row['product_shortDes']}</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> 
+                            <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        DELIMETER;
+
+        echo $shop_product;
+
+    }
+}
 
 /*
  * =======================
