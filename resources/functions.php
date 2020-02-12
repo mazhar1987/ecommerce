@@ -98,7 +98,38 @@ function get_products()
         echo $product;
 
     }
-}/*
+}
+
+function get_products_in_category_page()
+{
+
+    $get_cat_product_query = query("SELECT * FROM products WHERE product_cat_id =". escape_string($_GET['id']) ." ");
+    confirm($get_cat_product_query);
+
+    while($row = mysqli_fetch_array($get_cat_product_query))
+    {
+        $cat_product = <<<DELIMETER
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="{$row['product_image']}" alt="{$row['product_name']}">
+                    <div class="caption">
+                        <h4>{$row['product_name']}</h4>
+                        <p>{$row['product_shortDes']}</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> 
+                            <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        DELIMETER;
+
+        echo $cat_product;
+
+    }
+}
+
+/*
  * =======================
  * Get Categories
  * =======================
