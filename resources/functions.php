@@ -179,3 +179,25 @@ function get_categories()
     }
 
 }
+
+/*
+ * =======================
+ * Login user
+ * =======================
+ */
+
+function login_user() {
+    if (isset($_POST['submit'])) {
+        $username = escape_string($_POST['username']);
+        $password = escape_string($_POST['password']);
+
+        $user_query = query("SELECT * FROM users WHERE username = '{$username}' AND user_password = '{$password}'");
+        confirm($user_query);
+
+        if (mysqli_num_rows($user_query) == 0) {
+            redirect('login.php');
+        } else {
+            redirect('admin');
+        }
+    }
+}
