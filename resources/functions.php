@@ -6,6 +6,23 @@
  * =======================
  */
 
+// Set Message
+function set_message($msg) {
+    if (!empty($msg)) {
+        $_SESSION['message'] = $msg;
+    } else {
+        $msg = '';
+    }
+}
+
+// Display Message
+function display_message() {
+    if (isset($_SESSION['message']))  {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+}
+
 // Redirect
 function redirect($loc)
 {
@@ -195,8 +212,10 @@ function login_user() {
         confirm($user_query);
 
         if (mysqli_num_rows($user_query) == 0) {
+            set_message("Your username and password does not match.");
             redirect('login.php');
         } else {
+            set_message("Welcome to admin {$username}");
             redirect('admin');
         }
     }
