@@ -6,6 +6,23 @@
  * =======================
  */
 
+// Set Message
+function set_message($msg) {
+    if (!empty($msg)) {
+        $_SESSION['message'] = $msg;
+    } else {
+        $msg = '';
+    }
+}
+
+// Display Message
+function display_message() {
+    if (isset($_SESSION['message']))  {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+}
+
 // Redirect
 function redirect($loc)
 {
@@ -178,4 +195,28 @@ function get_categories()
         echo $categories;
     }
 
+}
+
+/*
+ * =======================
+ * Login user
+ * =======================
+ */
+
+function login_user() {
+    if (isset($_POST['submit'])) {
+        $username = escape_string($_POST['username']);
+        $password = escape_string($_POST['password']);
+
+        $user_query = query("SELECT * FROM users WHERE username = '{$username}' AND user_password = '{$password}'");
+        confirm($user_query);
+
+        if (mysqli_num_rows($user_query) == 0) {
+            set_message("Your username and password does not match.");
+            redirect('login.php');
+        } else {
+            set_message("Welcome to admin {$username}");
+            redirect('admin');
+        }
+    }
 }
