@@ -215,8 +215,20 @@ function login_user() {
             set_message("Your username and password does not match.");
             redirect('login.php');
         } else {
-            set_message("Welcome to admin {$username}");
+            set_message("Welcome to Admin area Mr. {$username}");
             redirect('admin');
         }
+    }
+}
+
+/*
+ * =======================
+ * Contact form
+ * =======================
+ */
+
+function send_email() {
+    if (isset($_POST['submit'])) {
+        echo 'Hi';
     }
 }
