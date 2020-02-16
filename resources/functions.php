@@ -215,8 +215,36 @@ function login_user() {
             set_message("Your username and password does not match.");
             redirect('login.php');
         } else {
-            set_message("Welcome to admin {$username}");
+            set_message("Welcome to Admin area Mr. {$username}");
             redirect('admin');
+        }
+    }
+}
+
+/*
+ * =======================
+ * Contact form
+ * =======================
+ */
+
+function send_email() {
+    if (isset($_POST['submit'])) {
+        $to = 'test@admin.com';
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+
+        $headers = "From: {$name} {$email}";
+
+        $result = mail($to, $subject, $message, $headers);
+
+        if (!$result) {
+            set_message("Sorry! We could not sent your email.");
+            redirect('contact.php');
+        } else {
+            set_message("Your message has been sent!");
+            redirect('contact.php');
         }
     }
 }
