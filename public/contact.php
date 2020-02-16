@@ -13,6 +13,7 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Contact Us</h2>
                     <h3 class="section-subheading text-muted"></h3>
+                    <p class="text-center alert-danger"><?php display_message(); ?></p>
                 </div>
             </div>
             <div class="row">
