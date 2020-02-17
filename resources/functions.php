@@ -248,3 +248,41 @@ function send_email() {
         }
     }
 }
+
+/*
+ * =======================
+ * Shopping Cart
+ * =======================
+ */
+
+function shoppingCart() {
+
+    foreach ($_SESSION as $key => $value) {
+        if (substr($key, 0, 8 ) == 'product_') {
+
+            $cart_query = query("SELECT * FROM products");
+            confirm($cart_query);
+
+            while ($row = fetch_array($cart_query)) {
+                $product_cart = <<<DELIMETER
+                    <tr>
+                        <td>{$row['product_name']}</td>
+                        <td>{$row['product_price']}</td>
+                        <td>{$row['product_quantity']}</td>
+                        <td>{$row['product_price']} * {$row['product_quantity']}</td>
+                        <td>
+                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                            <a href="cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
+                            <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+                DELIMETER;
+
+                echo $product_cart;
+
+            }
+
+        }
+    }
+
+}

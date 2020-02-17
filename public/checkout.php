@@ -33,14 +33,7 @@ if (isset($_SESSION['product_1'])) {
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>apple</td>
-                <td>$23</td>
-                <td>3</td>
-                <td>2</td>
-                <td><a href="cart.php?remove=1">Remove</a></td>
-                <td><a href="cart.php?delete=1">Delete</a></td>
-            </tr>
+            <?php shoppingCart(); ?>
         </tbody>
     </table>
 </form>
