@@ -161,7 +161,7 @@ function get_products_in_shop_page()
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
                         <p>
-                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
+                            <a href="cart.php?add={$row['product_1']}" class="btn btn-primary">Add to Cart</a> 
                             <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
