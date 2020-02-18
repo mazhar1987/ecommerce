@@ -257,14 +257,18 @@ function send_email() {
 
 function shoppingCart() {
 
-    foreach ($_SESSION as $key => $value) {
-        if (substr($key, 0, 8 ) == 'product_') {
+    foreach ($_SESSION as $name => $value) {
+        if ($value > 0) {
+            if (substr($name, 0, 8 ) == 'product_') {
 
-            $cart_query = query("SELECT * FROM products");
-            confirm($cart_query);
+                $length = strlen($name);
+                $id = substr($name, 8, $length);
 
-            while ($row = fetch_array($cart_query)) {
-                $product_cart = <<<DELIMETER
+                $cart_query = query("SELECT * FROM products WHERE product_id=" . escape_string($id) . " ");
+                confirm($cart_query);
+
+                while ($row = fetch_array($cart_query)) {
+                    $product_cart = <<<DELIMETER
                     <tr>
                         <td>{$row['product_name']}</td>
                         <td>{$row['product_price']}</td>
@@ -278,10 +282,11 @@ function shoppingCart() {
                     </tr>
                 DELIMETER;
 
-                echo $product_cart;
+                    echo $product_cart;
+
+                }
 
             }
-
         }
     }
 
