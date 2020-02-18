@@ -6,6 +6,7 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
 if (isset($_SESSION['product_1'])) {
     echo $_SESSION['product_1'];
+    display_message();
 }
 
 ?>

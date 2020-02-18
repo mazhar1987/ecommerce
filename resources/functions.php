@@ -268,12 +268,13 @@ function shoppingCart() {
                 confirm($cart_query);
 
                 while ($row = fetch_array($cart_query)) {
+                    $subTotal = $row['product_price'] * $value;
                     $product_cart = <<<DELIMETER
                     <tr>
                         <td>{$row['product_name']}</td>
-                        <td>{$row['product_price']}</td>
-                        <td>{$row['product_quantity']}</td>
-                        <td>{$row['product_price']} * {$row['product_quantity']}</td>
+                        <td>&#36;{$row['product_price']}</td>
+                        <td>{$value}</td>
+                        <td>&#36;{$subTotal}</td>
                         <td>
                             <a href="cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
                             <a href="cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
