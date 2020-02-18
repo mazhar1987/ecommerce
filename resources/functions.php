@@ -106,7 +106,7 @@ function get_products()
                     </div>
                     <div class="action" style="display: inline-block;width: 100%;padding-left: 8px;padding-right: 8px;">
                         <a href="product-details.php?id={$row['product_id']}" target="_blank" class="btn btn-primary pull-left">View Details</a>
-                        <a href="#" class="btn btn-danger pull-right">Add to cart</a>
+                        <a href="cart.php?add={$row['product_id']}" class="btn btn-danger pull-right">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@ function get_products_in_category_page()
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> 
+                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
                             <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
@@ -161,7 +161,7 @@ function get_products_in_shop_page()
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> 
+                            <a href="cart.php?add={$row['product_1']}" class="btn btn-primary">Add to Cart</a> 
                             <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
@@ -247,4 +247,53 @@ function send_email() {
             redirect('contact.php');
         }
     }
+}
+
+/*
+ * =======================
+ * Shopping Cart
+ * =======================
+ */
+
+function shoppingCart() {
+
+    $total = 0;
+    $item_quantity = 0;
+
+    foreach ($_SESSION as $name => $value) {
+        if ($value > 0) {
+            if (substr($name, 0, 8 ) == 'product_') {
+
+                $length = strlen($name);
+                $id = substr($name, 8, $length);
+
+                $cart_query = query("SELECT * FROM products WHERE product_id=" . escape_string($id) . " ");
+                confirm($cart_query);
+
+                while ($row = fetch_array($cart_query)) {
+                    $subTotal = $row['product_price'] * $value;
+                    $product_cart = <<<DELIMETER
+                        <tr>
+                            <td>{$row['product_name']}</td>
+                            <td>&#36;{$row['product_price']}</td>
+                            <td>{$value}</td>
+                            <td>&#36;{$subTotal}</td>
+                            <td>
+                                <a href="cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a href="cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
+                                <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        </tr>
+                    DELIMETER;
+
+                    echo $product_cart;
+                }
+
+                $_SESSION['item_total'] = $total += $subTotal;
+                $_SESSION['item_quantity'] = $item_quantity += $value;
+
+            }
+        }
+    }
+
 }
