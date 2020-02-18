@@ -257,6 +257,8 @@ function send_email() {
 
 function shoppingCart() {
 
+    $total = 0;
+
     foreach ($_SESSION as $name => $value) {
         if ($value > 0) {
             if (substr($name, 0, 8 ) == 'product_') {
@@ -270,22 +272,23 @@ function shoppingCart() {
                 while ($row = fetch_array($cart_query)) {
                     $subTotal = $row['product_price'] * $value;
                     $product_cart = <<<DELIMETER
-                    <tr>
-                        <td>{$row['product_name']}</td>
-                        <td>&#36;{$row['product_price']}</td>
-                        <td>{$value}</td>
-                        <td>&#36;{$subTotal}</td>
-                        <td>
-                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-                            <a href="cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
-                            <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-                        </td>
-                    </tr>
-                DELIMETER;
+                        <tr>
+                            <td>{$row['product_name']}</td>
+                            <td>&#36;{$row['product_price']}</td>
+                            <td>{$value}</td>
+                            <td>&#36;{$subTotal}</td>
+                            <td>
+                                <a href="cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a href="cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
+                                <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        </tr>
+                    DELIMETER;
 
                     echo $product_cart;
-
                 }
+
+                $_SESSION['item_total'] = $total += $subTotal;
 
             }
         }
