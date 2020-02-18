@@ -4,10 +4,6 @@ require_once('../resources/config.php');
 include_once(TEMPLATE_FRONT . DS . 'header.php');
 include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
-if (isset($_SESSION['product_1'])) {
-    display_message();
-}
-
 ?>
 
 
@@ -49,7 +45,11 @@ if (isset($_SESSION['product_1'])) {
 
 <tr class="cart-subtotal">
 <th>Items:</th>
-<td><span class="amount">4</span></td>
+<td>
+    <span class="amount">
+        <?php echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : 0; ?>
+    </span>
+</td>
 </tr>
 <tr class="shipping">
 <th>Shipping and Handling</th>

@@ -258,6 +258,7 @@ function send_email() {
 function shoppingCart() {
 
     $total = 0;
+    $item_quantity = 0;
 
     foreach ($_SESSION as $name => $value) {
         if ($value > 0) {
@@ -289,6 +290,7 @@ function shoppingCart() {
                 }
 
                 $_SESSION['item_total'] = $total += $subTotal;
+                $_SESSION['item_quantity'] = $item_quantity += $value;
 
             }
         }
