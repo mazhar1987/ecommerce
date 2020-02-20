@@ -17,7 +17,9 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
       <h1>Checkout</h1>
 
-<form action="">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_cart">
+    <input type="hidden" name="business" value="business@mazhar.com">
     <table class="table table-striped">
         <thead>
           <tr>
@@ -32,6 +34,7 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
             <?php shoppingCart(); ?>
         </tbody>
     </table>
+    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
 </form>
 
 
