@@ -258,6 +258,7 @@ function send_email() {
 function shoppingCart() {
 
     $total = 0;
+    $subTotal = 0;
     $item_quantity = 0;
     $item_name = 1;
     $item_number = 1;
@@ -288,10 +289,11 @@ function shoppingCart() {
                                 <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
-                        <input type="hidden" name="item_name_{$item_name}" value="hat">
-                        <input type="hidden" name="item_number_{$item_number}" value="123">
-                        <input type="hidden" name="amount_{$amount}" value="15.00">
-                        <input type="hidden" name="quantity_{$quantity}" value="1">
+                        <input type="hidden" name="item_name_{$item_name}" value="{$row['product_name']}">
+                        <input type="hidden" name="item_number_{$item_number}" value="{$row['product_id']}">
+                        <input type="hidden" name="amount_{$amount}" value="{$row['product_price']}">
+                        <input type="hidden" name="quantity_{$quantity}" value="{$row['product_quantity']}">
+                        <input type="hidden" name="upload" value="1">
                     DELIMETER;
 
                     echo $product_cart;
