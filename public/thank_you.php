@@ -16,7 +16,7 @@ if (isset($_GET['tx'])) {
 $order_query = query("INSERT INTO orders (order_amount, order_transaction, order_status, order_currency_code) VALUES ('{$amount}', '{$transaction}', '{$status}', '{$currency_code}')");
 confirm($order_query);
 
-//session_destroy();
+session_destroy();
 
 
 ?>
