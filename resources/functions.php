@@ -258,7 +258,12 @@ function send_email() {
 function shoppingCart() {
 
     $total = 0;
+    $subTotal = 0;
     $item_quantity = 0;
+    $item_name = 1;
+    $item_number = 1;
+    $amount = 1;
+    $quantity = 1;
 
     foreach ($_SESSION as $name => $value) {
         if ($value > 0) {
@@ -284,9 +289,18 @@ function shoppingCart() {
                                 <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
+                        <input type="hidden" name="item_name_{$item_name}" value="{$row['product_name']}">
+                        <input type="hidden" name="item_number_{$item_number}" value="{$row['product_id']}">
+                        <input type="hidden" name="amount_{$amount}" value="{$row['product_price']}">
+                        <input type="hidden" name="quantity_{$quantity}" value="{$value}">
+                        <input type="hidden" name="upload" value="1">
                     DELIMETER;
 
                     echo $product_cart;
+                    $item_name++;
+                    $item_number++;
+                    $amount++;
+                    $quantity++;
                 }
 
                 $_SESSION['item_total'] = $total += $subTotal;
@@ -295,5 +309,15 @@ function shoppingCart() {
             }
         }
     }
+}
 
+function show_paypal() {
+
+    if (isset($_SESSION['item_quantity'])) {
+        $payPal_button = <<<DELIMETER
+            <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
+        DELIMETER;
+
+        return $payPal_button;
+    }
 }

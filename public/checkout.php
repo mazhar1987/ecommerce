@@ -17,7 +17,9 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
       <h1>Checkout</h1>
 
-<form action="">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_cart">
+    <input type="hidden" name="business" value="business@mazhar.com">
     <table class="table table-striped">
         <thead>
           <tr>
@@ -32,11 +34,11 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
             <?php shoppingCart(); ?>
         </tbody>
     </table>
+    <?php echo show_paypal(); ?>
 </form>
 
 
-
-<!--  ***********CART TOTALS*************-->
+    <!--  ***********CART TOTALS*************-->
             
 <div class="col-xs-4 pull-right ">
 <h2>Cart Totals</h2>
@@ -60,7 +62,7 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 <th>Order Total</th>
 <td>
     <strong>
-        <span class="amount">&#36;
+        <span class="amount">$
             <?php
                 echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : 0;
             ?>
