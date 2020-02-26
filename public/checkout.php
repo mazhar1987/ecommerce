@@ -17,7 +17,7 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
       <h1>Checkout</h1>
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_cart">
     <input type="hidden" name="business" value="business@mazhar.com">
     <table class="table table-striped">
