@@ -2,6 +2,7 @@
 require_once('../../resources/config.php');
 include_once(TEMPLATE_BACK . DS . 'admin_header.php');
 include_once(TEMPLATE_BACK . DS . 'admin_navbar.php');
+
 ?>
 
 <div id="page-wrapper">
@@ -23,8 +24,15 @@ include_once(TEMPLATE_BACK . DS . 'admin_navbar.php');
             </div>
         </div>
 
-        <?php include_once(TEMPLATE_BACK . DS . 'dashboard_info.php'); ?>
-        <?php include_once(TEMPLATE_BACK . DS . 'dashboard_transaction.php'); ?>
+        <?php
+
+        if ($_SERVER['REQUEST_URI'] == "/practice/php/ecommerce/public/admin/" || $_SERVER['REQUEST_URI'] == "/practice/php/ecommerce/public/admin/index.php") {
+
+            include_once(TEMPLATE_BACK . DS . 'dashboard_info.php');
+            include_once(TEMPLATE_BACK . DS . 'dashboard_transaction.php');
+        }
+
+        ?>
 
     </div>
     <!-- /.container-fluid -->
