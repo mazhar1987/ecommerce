@@ -161,7 +161,7 @@ function get_products_in_shop_page()
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
                         <p>
-                            <a href="cart.php?add={$row['product_1']}" class="btn btn-primary">Add to Cart</a> 
+                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
                             <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
@@ -313,7 +313,7 @@ function shoppingCart() {
 
 function show_paypal() {
 
-    if (isset($_SESSION['item_quantity'])) {
+    if (isset($_SESSION['item_quantity']) && $_SESSION['item_quantity'] >= 1) {
         $payPal_button = <<<DELIMETER
             <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
         DELIMETER;
