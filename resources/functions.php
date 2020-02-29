@@ -322,3 +322,72 @@ function show_paypal() {
         return $payPal_button;
     }
 }
+
+
+/*
+ * =======================
+ * Report
+ * =======================
+ */
+
+function report() {
+
+    if (isset($_GET['tx'])) {
+        $amount = $_GET['amt'];
+        $currency_code = $_GET['cc'];
+        $transaction = $_GET['tx'];
+        $status = $_GET['st'];
+
+        $total = 0;
+        $subTotal = 0;
+        $item_quantity = 0;
+
+
+        foreach ($_SESSION as $name => $value) {
+            if ($value > 0) {
+                if (substr($name, 0, 8) == 'product_') {
+
+                    $length = strlen($name);
+                    $id = substr($name, 8, $length);
+
+                    $cart_query = query("SELECT * FROM products WHERE product_id=" . escape_string($id) . " ");
+                    confirm($cart_query);
+
+                    while ($row = fetch_array($cart_query)) {
+                        $subTotal = $row['product_price'] * $value;
+                        $item_quantity += $value;
+
+                        // For Order
+                        $order_query = query("INSERT INTO orders (order_amount, order_transaction, order_status, order_currency_code) VALUES ('{$amount}', '{$transaction}', '{$status}', '{$currency_code}')");
+                        $last_id = last_id();
+                        confirm($order_query);
+
+                        $product_price = $row['product_price'];
+                        $product_name = $row['product_name'];
+
+                        // For Report
+
+                        $report_query = query("INSERT INTO reports (product_id, product_name, order_id, product_price, product_quantity) VALUES ('{$id}', '{$product_name}', '{$last_id}', '{$product_price}', '{$value}')");
+                        confirm($report_query);
+
+                    }
+
+                    $total += $subTotal;
+                    $item_quantity;
+
+                }
+            }
+        }
+
+        session_destroy();
+
+    } else {
+        redirect('index.php');
+    }
+}
+
+function last_id() {
+    global $connect;
+
+    return mysqli_insert_id($connect);
+}
