@@ -332,30 +332,59 @@ function show_paypal() {
 
 function report() {
 
-    $total = 0;
-    $subTotal = 0;
-    $item_quantity = 0;
+    if (isset($_GET['tx'])) {
+        $amount = $_GET['amt'];
+        $currency_code = $_GET['cc'];
+        $transaction = $_GET['tx'];
+        $status = $_GET['st'];
+
+        $order_query = query("INSERT INTO orders (order_amount, order_transaction, order_status, order_currency_code) VALUES ('{$amount}', '{$transaction}', '{$status}', '{$currency_code}')");
+        $last_id = last_id();
+        confirm($order_query);
 
 
-    foreach ($_SESSION as $name => $value) {
-        if ($value > 0) {
-            if (substr($name, 0, 8 ) == 'product_') {
+        $total = 0;
+        $subTotal = 0;
+        $item_quantity = 0;
 
-                $length = strlen($name);
-                $id = substr($name, 8, $length);
 
-                $cart_query = query("SELECT * FROM products WHERE product_id=" . escape_string($id) . " ");
-                confirm($cart_query);
+        foreach ($_SESSION as $name => $value) {
+            if ($value > 0) {
+                if (substr($name, 0, 8) == 'product_') {
 
-                while ($row = fetch_array($cart_query)) {
-                    $subTotal = $row['product_price'] * $value;
+                    $length = strlen($name);
+                    $id = substr($name, 8, $length);
+
+                    $cart_query = query("SELECT * FROM products WHERE product_id=" . escape_string($id) . " ");
+                    confirm($cart_query);
+
+                    while ($row = fetch_array($cart_query)) {
+                        $subTotal = $row['product_price'] * $value;
+                        $item_quantity += $value;
+
+                        $product_price = $row['product_price'];
+
+                        $report_query = query("INSERT INTO reports (product_id, order_id, product_price, product_quantity) VALUES ('{$id}', '{$last_id}', '{$product_price}', '{$value}')");
+                        confirm($report_query);
+
+                    }
+
+                    $total += $subTotal;
+                    $item_quantity;
 
                 }
-
-                $total += $subTotal;
-                $item_quantity += $value;
-
             }
         }
+
+        session_destroy();
+
+    } else {
+        redirect('index.php');
     }
+}
+
+function last_id() {
+    global $connect;
+
+    return mysqli_insert_id($connect);
 }
