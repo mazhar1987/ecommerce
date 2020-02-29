@@ -1,6 +1,7 @@
 
 <div class="row">
     <div class="col-md-12">
+        <p class="text-center alert-success"><?php display_message(); ?></p>
         <table class="table table-hover table-responsive">
             <thead>
             <tr>
@@ -9,6 +10,7 @@
                 <th>Transaction</th>
                 <th>Currency</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
             </thead>
 

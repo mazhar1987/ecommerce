@@ -4,7 +4,7 @@ require_once('../resources/config.php');
 include_once(TEMPLATE_FRONT . DS . 'header.php');
 include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
-report();
+transactions_process();
 
 ?>
 

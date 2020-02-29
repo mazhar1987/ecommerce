@@ -336,7 +336,7 @@ function show_paypal()
  * =======================
  */
 
-function report()
+function transactions_process()
 {
 
     if (isset($_GET['tx'])) {
@@ -422,6 +422,7 @@ function display_orders()
                 <td>{$row['order_transaction']}</td>
                 <td>{$row['order_currency_code']}</td>
                 <td>{$row['order_status']}</td>
+                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
             </tr>        
         DELIMETER;
 
