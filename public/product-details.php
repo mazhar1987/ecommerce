@@ -47,7 +47,7 @@ include_once(TEMPLATE_FRONT . DS . 'top_nav.php');
 
                             <form action="">
                                 <div class="form-group">
-                                    <a href="cart.php?add=<?php echo $row['product_id']; ?>" class="btn btn-primary">Add to Cart</a>
+                                    <a href="../resources/cart.php?add=<?php echo $row['product_id']; ?>" class="btn btn-primary">Add to Cart</a>
                                 </div>
                             </form>
                         </div>

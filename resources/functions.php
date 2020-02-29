@@ -106,7 +106,7 @@ function get_products()
                     </div>
                     <div class="action" style="display: inline-block;width: 100%;padding-left: 8px;padding-right: 8px;">
                         <a href="product-details.php?id={$row['product_id']}" target="_blank" class="btn btn-primary pull-left">View Details</a>
-                        <a href="cart.php?add={$row['product_id']}" class="btn btn-danger pull-right">Add to Cart</a>
+                        <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-danger pull-right">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@ function get_products_in_category_page()
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
                         <p>
-                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
+                            <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
                             <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
@@ -161,7 +161,7 @@ function get_products_in_shop_page()
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
                         <p>
-                            <a href="cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
+                            <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Add to Cart</a> 
                             <a href="product-details.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
@@ -285,9 +285,9 @@ function shoppingCart() {
                             <td>{$value}</td>
                             <td>&#36;{$subTotal}</td>
                             <td>
-                                <a href="cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-                                <a href="cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
-                                <a href="cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a href="../resources/cart.php?remove={$row['product_id']}" class="btn btn-warning"><span class="glyphicon glyphicon-minus"></span></a>
+                                <a href="../resources/cart.php?delete={$row['product_id']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
                         <input type="hidden" name="item_name_{$item_name}" value="{$row['product_name']}">
