@@ -322,3 +322,40 @@ function show_paypal() {
         return $payPal_button;
     }
 }
+
+
+/*
+ * =======================
+ * Report
+ * =======================
+ */
+
+function report() {
+
+    $total = 0;
+    $subTotal = 0;
+    $item_quantity = 0;
+
+
+    foreach ($_SESSION as $name => $value) {
+        if ($value > 0) {
+            if (substr($name, 0, 8 ) == 'product_') {
+
+                $length = strlen($name);
+                $id = substr($name, 8, $length);
+
+                $cart_query = query("SELECT * FROM products WHERE product_id=" . escape_string($id) . " ");
+                confirm($cart_query);
+
+                while ($row = fetch_array($cart_query)) {
+                    $subTotal = $row['product_price'] * $value;
+
+                }
+
+                $total += $subTotal;
+                $item_quantity += $value;
+
+            }
+        }
+    }
+}

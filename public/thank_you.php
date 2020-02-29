@@ -18,6 +18,8 @@ confirm($order_query);
 
 session_destroy();
 
+report();
+
 
 ?>
 
