@@ -12,10 +12,10 @@ if (isset($_GET['add'])) {
     while ($row = fetch_array($product_query_to_cart)) {
         if ($row['product_quantity'] != $_SESSION['product_' . $_GET['add']]) {
             $_SESSION['product_' . $_GET['add']] += 1;
-            redirect('checkout.php');
+            redirect('../public/checkout.php');
         } else {
             set_message("We only have " . $row['product_quantity'] . " Available");
-            redirect('checkout.php');
+            redirect('../public/checkout.php');
         }
     }
 }
@@ -26,9 +26,9 @@ if (isset($_GET['remove'])) {
     if ($_SESSION['product_' . $_GET['remove']] < 1) {
         unset($_SESSION['item_total']);
         unset($_SESSION['item_quantity']);
-        redirect("checkout.php");
+        redirect("../public/checkout.php");
     } else {
-        redirect("checkout.php");
+        redirect("../public/checkout.php");
     }
 }
 
@@ -36,7 +36,7 @@ if (isset($_GET['delete'])) {
     $_SESSION['product_' . $_GET['delete']] = 0;
     unset($_SESSION['item_total']);
     unset($_SESSION['item_quantity']);
-    redirect("checkout.php");
+    redirect("../public/checkout.php");
 }
 ?>
 
