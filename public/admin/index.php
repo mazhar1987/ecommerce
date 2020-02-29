@@ -32,6 +32,18 @@ include_once(TEMPLATE_BACK . DS . 'admin_navbar.php');
             include_once(TEMPLATE_BACK . DS . 'dashboard_transaction.php');
         }
 
+        if (isset($_GET['orders'])) {
+            include_once(TEMPLATE_BACK . DS . 'orders.php');
+        } else if (isset($_GET['categories'])) {
+            include_once(TEMPLATE_BACK . DS . 'categories.php');
+        } else if (isset($_GET['products'])) {
+            include_once(TEMPLATE_BACK . DS . 'products.php');
+        } else if (isset($_GET['add_product'])) {
+            include_once(TEMPLATE_BACK . DS . 'add_product.php');
+        } else if (isset($_GET['users'])) {
+            include_once(TEMPLATE_BACK . DS . 'users.php');
+        }
+
         ?>
 
     </div>
