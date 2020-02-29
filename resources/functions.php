@@ -338,11 +338,6 @@ function report() {
         $transaction = $_GET['tx'];
         $status = $_GET['st'];
 
-        $order_query = query("INSERT INTO orders (order_amount, order_transaction, order_status, order_currency_code) VALUES ('{$amount}', '{$transaction}', '{$status}', '{$currency_code}')");
-        $last_id = last_id();
-        confirm($order_query);
-
-
         $total = 0;
         $subTotal = 0;
         $item_quantity = 0;
@@ -362,9 +357,17 @@ function report() {
                         $subTotal = $row['product_price'] * $value;
                         $item_quantity += $value;
 
-                        $product_price = $row['product_price'];
+                        // For Order
+                        $order_query = query("INSERT INTO orders (order_amount, order_transaction, order_status, order_currency_code) VALUES ('{$amount}', '{$transaction}', '{$status}', '{$currency_code}')");
+                        $last_id = last_id();
+                        confirm($order_query);
 
-                        $report_query = query("INSERT INTO reports (product_id, order_id, product_price, product_quantity) VALUES ('{$id}', '{$last_id}', '{$product_price}', '{$value}')");
+                        $product_price = $row['product_price'];
+                        $product_name = $row['product_name'];
+
+                        // For Report
+
+                        $report_query = query("INSERT INTO reports (product_id, product_name, order_id, product_price, product_quantity) VALUES ('{$id}', '{$product_name}', '{$last_id}', '{$product_price}', '{$value}')");
                         confirm($report_query);
 
                     }
