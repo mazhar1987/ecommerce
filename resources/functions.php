@@ -7,7 +7,8 @@
  */
 
 // Set Message
-function set_message($msg) {
+function set_message($msg)
+{
     if (!empty($msg)) {
         $_SESSION['message'] = $msg;
     } else {
@@ -16,7 +17,8 @@ function set_message($msg) {
 }
 
 // Display Message
-function display_message() {
+function display_message()
+{
     if (isset($_SESSION['message']))  {
         echo $_SESSION['message'];
         unset($_SESSION['message']);
@@ -203,7 +205,8 @@ function get_categories()
  * =======================
  */
 
-function login_user() {
+function login_user()
+{
     if (isset($_POST['submit'])) {
         $username = escape_string($_POST['username']);
         $password = escape_string($_POST['password']);
@@ -228,7 +231,8 @@ function login_user() {
  * =======================
  */
 
-function send_email() {
+function send_email()
+{
     if (isset($_POST['submit'])) {
         $to = 'test@admin.com';
         $name = $_POST['name'];
@@ -256,7 +260,8 @@ function send_email() {
  * =======================
  */
 
-function shoppingCart() {
+function shoppingCart()
+{
 
     $total = 0;
     $subTotal = 0;
@@ -312,7 +317,8 @@ function shoppingCart() {
     }
 }
 
-function show_paypal() {
+function show_paypal()
+{
 
     if (isset($_SESSION['item_quantity']) && $_SESSION['item_quantity'] >= 1) {
         $payPal_button = <<<DELIMETER
@@ -330,7 +336,8 @@ function show_paypal() {
  * =======================
  */
 
-function report() {
+function transactions_process()
+{
 
     if (isset($_GET['tx'])) {
         $amount = $_GET['amt'];
@@ -386,8 +393,42 @@ function report() {
     }
 }
 
-function last_id() {
+function last_id()
+{
     global $connect;
 
     return mysqli_insert_id($connect);
+}
+
+
+/*
+ * =======================
+ * Orders Page in backend
+ * =======================
+ */
+
+function display_orders()
+{
+
+    $orders_query = query("SELECT * FROM orders");
+    confirm($orders_query);
+
+    while ($row = fetch_array($orders_query)) {
+
+        $orders = <<<DELIMETER
+            <tr>
+                <td>{$row['order_id']}</td>
+                <td>{$row['order_amount']}</td>
+                <td>{$row['order_transaction']}</td>
+                <td>{$row['order_currency_code']}</td>
+                <td>{$row['order_status']}</td>
+                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>        
+        DELIMETER;
+
+        echo $orders;
+
+        
+    }
+
 }
