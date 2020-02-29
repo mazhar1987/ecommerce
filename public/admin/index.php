@@ -3,6 +3,10 @@ require_once('../../resources/config.php');
 include_once(TEMPLATE_BACK . DS . 'admin_header.php');
 include_once(TEMPLATE_BACK . DS . 'admin_navbar.php');
 
+if (!isset($_SESSION['username'])) {
+    redirect('../../public');
+}
+
 ?>
 
 <div id="page-wrapper">

@@ -215,6 +215,7 @@ function login_user() {
             set_message("Your username and password does not match.");
             redirect('login.php');
         } else {
+            $_SESSION['username'] = $username;
             set_message("Welcome to Admin area Mr. {$username}");
             redirect('admin');
         }
