@@ -403,7 +403,7 @@ function last_id()
 
 /*
  * =======================
- * Orders Page in backend
+ * Display orders in admin
  * =======================
  */
 
@@ -415,7 +415,7 @@ function display_orders()
 
     while ($row = fetch_array($orders_query)) {
 
-        $orders = <<<DELIMETER
+        $order = <<<DELIMETER
             <tr>
                 <td>{$row['order_id']}</td>
                 <td>{$row['order_amount']}</td>
@@ -426,9 +426,40 @@ function display_orders()
             </tr>        
         DELIMETER;
 
-        echo $orders;
+        echo $order;
 
         
     }
 
+}
+
+/*
+ * =======================
+ * Display products in admin
+ * =======================
+ */
+
+function display_products()
+{
+    $get_product_query = query("SELECT * FROM products");
+    confirm($get_product_query);
+
+    while ($row = fetch_array($get_product_query)) {
+
+        $product = <<<DELIMETER
+            <tr>
+                <td>{$row['product_id']}</td>
+                <td>{$row['product_name']}</td>
+                <td><img width="100" src="{$row['product_image']}" alt=""></td>
+                <td>{$row['product_cat_id']}</td>
+                <td>&#36;{$row['product_price']}</td>
+                <td>{$row['product_quantity']}</td>
+                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>       
+        DELIMETER;
+
+        echo $product;
+
+
+    }
 }
