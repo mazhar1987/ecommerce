@@ -57,13 +57,12 @@
                     <!-- Product Tags -->
                     <div class="form-group">
                         <label for="product-title">Product Keywords</label>
-                        <hr>
                         <input type="text" name="product_tags" class="form-control">
                     </div>
                     <!-- Product Image -->
                     <div class="form-group">
                         <label for="product-title">Product Image</label>
-                        <input type="file" name="file">
+                        <input type="file" name="product_image">
                     </div>
                 </aside><!--SIDEBAR-->
             </div>
