@@ -450,11 +450,14 @@ function display_products()
             <tr>
                 <td>{$row['product_id']}</td>
                 <td>{$row['product_name']}</td>
-                <td><img width="100" src="{$row['product_image']}" alt=""></td>
+                <td><a href="index.php?edit_product&id={$row['product_id']}"><img width="100" src="{$row['product_image']}" alt=""></a></td>
                 <td>{$row['product_cat_id']}</td>
                 <td>&#36;{$row['product_price']}</td>
                 <td>{$row['product_quantity']}</td>
-                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td>
+                    <a class="btn btn-success" href="index.php?edit_product&id={$row['product_id']}"><span class="glyphicon glyphicon-edit"></span></a>                 
+                    <a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
             </tr>       
         DELIMETER;
 

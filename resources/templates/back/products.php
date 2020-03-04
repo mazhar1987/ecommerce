@@ -1,7 +1,10 @@
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-hover">
+        <p><a class="btn btn-primary" href="index.php?add_product">Add Product</a></p>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-hover table-responsive">
             <thead>
             <tr>
                 <th>Id</th>

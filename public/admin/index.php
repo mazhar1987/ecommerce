@@ -44,6 +44,8 @@ if (!isset($_SESSION['username'])) {
             include_once(TEMPLATE_BACK . DS . 'products.php');
         } else if (isset($_GET['add_product'])) {
             include_once(TEMPLATE_BACK . DS . 'add_product.php');
+        } else if (isset($_GET['edit_product'])) {
+            include_once(TEMPLATE_BACK . DS . 'edit_product.php');
         } else if (isset($_GET['users'])) {
             include_once(TEMPLATE_BACK . DS . 'users.php');
         }
