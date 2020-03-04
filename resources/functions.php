@@ -477,38 +477,22 @@ function display_products()
 function add_product()
 {
     if (isset($_POST['publish'])) {
-        $product_title = $_POST['product_title'];
-        $product_des = $_POST['product_description'];
-        $product_price = $_POST['product_price'];
-        $product_category = $_POST['product_category'];
-        $product_brand = $_POST['product_brand'];
-        $product_tags = $_POST['product_tags'];
+        $product_title = escape_string($_POST['product_title']);
+        $product_des = escape_string($_POST['product_description']);
+        $product_price = escape_string($_POST['product_price']);
+        $product_cat_id = escape_string($_POST['product_cat_id']);
+        $product_brand = escape_string($_POST['product_brand']);
+        $product_tags = escape_string($_POST['product_tags']);
 
-        $product_image = escape($_FILES['product_image']['name']);
-        $product_image_tmp = escape($_FILES['product_image']['tmp_name']);
-    }
-    $get_product_query = query("INSERT INTO products (product_name, product_cat_id, prodct_des, product_shortDes, product_price, product_quantity, product_image) VALUES ()");
-    confirm($get_product_query);
+        $product_image = escape_string($_FILES['product_image']['name']);
+        $product_image_tmp = escape_string($_FILES['product_image']['tmp_name']);
 
-    while ($row = fetch_array($get_product_query)) {
+        // The uploaded image is moved to the images folder
+        move_uploaded_file($product_image_tmp,UPLOAD_DIRECTORY . DS . $product_image);
 
-        $product = <<<DELIMETER
-            <tr>
-                <td>{$row['product_id']}</td>
-                <td>{$row['product_name']}</td>
-                <td><a href="index.php?edit_product&id={$row['product_id']}"><img width="100" src="{$row['product_image']}" alt=""></a></td>
-                <td>{$row['product_cat_id']}</td>
-                <td>&#36;{$row['product_price']}</td>
-                <td>{$row['product_quantity']}</td>
-                <td>
-                    <a class="btn btn-success" href="index.php?edit_product&id={$row['product_id']}"><span class="glyphicon glyphicon-edit"></span></a>                 
-                    <a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
-                </td>
-            </tr>       
-        DELIMETER;
+        $get_product_query = query("INSERT INTO products (product_name, product_cat_id, prodct_des, product_shortDes, product_price, product_quantity, product_image) VALUES ()");
+        confirm($get_product_query);
 
-        echo $product;
-
-
+        while ($row = fetch_array($get_product_query)) {}
     }
 }

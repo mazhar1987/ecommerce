@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label for="product-title">Product Category</label>
                         <hr>
-                        <select name="product_category" id="" class="form-control">
+                        <select name="product_cat_id" id="" class="form-control">
                             <option value="">Select Category</option>
                         </select>
                     </div>
