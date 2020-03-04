@@ -1,5 +1,18 @@
 
 <div class="row">
+    <div class="col-lg-12">
+        <h3 class="text-center alert-success"><?php display_message(); ?></h3>
+        <h1 class="page-header">
+            Dashboard <small>Add Product</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-dashboard"></i> Add Product
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-12">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="row">

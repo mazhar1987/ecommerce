@@ -13,24 +13,27 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="text-center alert-success"><?php //display_message(); ?></h3>
-                <h1 class="page-header">
-                    Dashboard <small>Statistics Overview</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="active">
-                        <i class="fa fa-dashboard"></i> Dashboard
-                    </li>
-                </ol>
-            </div>
-        </div>
-
         <?php
 
         if ($_SERVER['REQUEST_URI'] == "/practice/php/ecommerce/public/admin/" || $_SERVER['REQUEST_URI'] == "/practice/php/ecommerce/public/admin/index.php") {
+
+            $page_heading = <<<DELIMETER
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-center alert-success"><?php //display_message(); ?></h3>
+                    <h1 class="page-header">
+                        Dashboard <small>Statistics Overview</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Dashboard
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            DELIMETER;
+            echo $page_heading;
+
 
             include_once(TEMPLATE_BACK . DS . 'dashboard_info.php');
             include_once(TEMPLATE_BACK . DS . 'dashboard_transaction.php');
