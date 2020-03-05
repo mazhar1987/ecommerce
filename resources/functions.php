@@ -490,8 +490,11 @@ function add_product()
         // The uploaded image is moved to the images folder
         move_uploaded_file($product_image_tmp,UPLOAD_DIRECTORY . DS . $product_image);
 
-        $get_product_query = query("INSERT INTO products (product_name, product_cat_id, prodct_des, product_shortDes, product_price, product_quantity, product_image) VALUES ()");
+        $get_product_query = query("INSERT INTO products (product_name, product_cat_id, prodct_des, product_price, product_image, product_brand, product_tags) VALUES ('{$product_title}', '{$product_cat_id}', '{$product_des}', '{$product_price}', '{$product_image}', '{$product_brand}', '{$product_tags}')");
+        $last_id = last_id();
         confirm($get_product_query);
+        set_message('Adding a new product and the id is: ' . $last_id);
+        redirect('index.php?products');
 
         while ($row = fetch_array($get_product_query)) {}
     }

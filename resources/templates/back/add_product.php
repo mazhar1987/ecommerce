@@ -18,8 +18,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label for="product-title">Product Title </label>
-                        <input type="text" name="product_title" class="form-control">
+                        <label for="product_name">Product Name </label>
+                        <input type="text" name="product_name" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="product-title">Product Description</label>
