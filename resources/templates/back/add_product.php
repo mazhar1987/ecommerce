@@ -1,4 +1,8 @@
 
+<?php
+add_product()
+?>
+
 <div class="row">
     <div class="col-lg-12">
         <h3 class="text-center alert-success"><?php display_message(); ?></h3>
@@ -22,12 +26,16 @@
                         <input type="text" name="product_name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="product-title">Product Description</label>
+                        <label for="product_shortDes">Product Short Description</label>
+                        <textarea name="product_shortDes" id="" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product_description">Product Description</label>
                         <textarea name="product_description" id="" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-3">
-                            <label for="product-price">Product Price</label>
+                            <label for="product_price">Product Price</label>
                             <input type="number" name="product_price" class="form-control" size="60">
                         </div>
                     </div>
@@ -41,7 +49,7 @@
                     </div>
                     <!-- Product Categories-->
                     <div class="form-group">
-                        <label for="product-title">Product Category</label>
+                        <label for="product_cat_id">Product Category</label>
                         <hr>
                         <select name="product_cat_id" id="" class="form-control">
                             <option value="">Select Category</option>
@@ -49,19 +57,21 @@
                     </div>
                     <!-- Product Brands-->
                     <div class="form-group">
-                        <label for="product-title">Product Brand</label>
-                        <select name="product_brand" id="" class="form-control">
-                            <option value="">Select Brand</option>
-                        </select>
+                        <label for="product_brand">Product Brand</label>
+                        <input type="text" name="product_brand" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="product_quantity">Product Quantity</label>
+                        <input type="number" name="product_quantity" class="form-control">
                     </div>
                     <!-- Product Tags -->
-                    <div class="form-group">
-                        <label for="product-title">Product Keywords</label>
-                        <input type="text" name="product_tags" class="form-control">
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="product_tags">Product Keywords</label>-->
+<!--                        <input type="text" name="product_tags" class="form-control">-->
+<!--                    </div>-->
                     <!-- Product Image -->
                     <div class="form-group">
-                        <label for="product-title">Product Image</label>
+                        <label for="product_image">Product Image</label>
                         <input type="file" name="product_image">
                     </div>
                 </aside><!--SIDEBAR-->

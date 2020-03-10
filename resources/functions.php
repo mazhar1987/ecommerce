@@ -477,11 +477,13 @@ function display_products()
 function add_product()
 {
     if (isset($_POST['publish'])) {
-        $product_title = escape_string($_POST['product_title']);
+        $product_name = escape_string($_POST['product_name']);
+        $product_shortDes = escape_string($_POST['product_shortDes']);
         $product_des = escape_string($_POST['product_description']);
         $product_price = escape_string($_POST['product_price']);
         $product_cat_id = escape_string($_POST['product_cat_id']);
         $product_brand = escape_string($_POST['product_brand']);
+        $product_quantity = escape_string($_POST['product_quantity']);
         $product_tags = escape_string($_POST['product_tags']);
 
         $product_image = escape_string($_FILES['product_image']['name']);
@@ -490,12 +492,10 @@ function add_product()
         // The uploaded image is moved to the images folder
         move_uploaded_file($product_image_tmp,UPLOAD_DIRECTORY . DS . $product_image);
 
-        $get_product_query = query("INSERT INTO products (product_name, product_cat_id, prodct_des, product_price, product_image, product_brand, product_tags) VALUES ('{$product_title}', '{$product_cat_id}', '{$product_des}', '{$product_price}', '{$product_image}', '{$product_brand}', '{$product_tags}')");
+        $get_product_query = query("INSERT INTO products (product_name, product_shortDes, product_des, product_price, product_quantity, product_image, product_brand) VALUES ('{$product_name}', '{$product_shortDes}', '{$product_des}', '{$product_quantity}', '{$product_price}', '{$product_image}', '{$product_brand}')");
         $last_id = last_id();
         confirm($get_product_query);
         set_message('Adding a new product and the id is: ' . $last_id);
         redirect('index.php?products');
-
-        while ($row = fetch_array($get_product_query)) {}
     }
 }
