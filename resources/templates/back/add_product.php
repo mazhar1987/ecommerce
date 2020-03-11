@@ -27,7 +27,7 @@ add_product()
                     </div>
                     <div class="form-group">
                         <label for="product_shortDes">Product Short Description</label>
-                        <textarea name="product_shortDes" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="product_shortDes" id="" cols="30" rows="3" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="product_description">Product Description</label>
@@ -37,6 +37,10 @@ add_product()
                         <div class="col-xs-3">
                             <label for="product_price">Product Price</label>
                             <input type="number" name="product_price" class="form-control" size="60">
+                        </div>
+                        <div class="col-xs-3">
+                            <label for="product_price">Product Old Price</label>
+                            <input type="number" name="product_old_price" class="form-control" size="60">
                         </div>
                     </div>
                 </div><!--Main Content-->
@@ -51,8 +55,9 @@ add_product()
                     <div class="form-group">
                         <label for="product_cat_id">Product Category</label>
                         <hr>
-                        <select name="product_cat_id" id="" class="form-control">
+                        <select name="product_cat_id" id="product_cat_id" class="form-control">
                             <option value="">Select Category</option>
+                            <?php display_categories_in_add_product_page(); ?>
                         </select>
                     </div>
                     <!-- Product Brands-->
@@ -65,10 +70,10 @@ add_product()
                         <input type="number" name="product_quantity" class="form-control">
                     </div>
                     <!-- Product Tags -->
-<!--                    <div class="form-group">-->
-<!--                        <label for="product_tags">Product Keywords</label>-->
-<!--                        <input type="text" name="product_tags" class="form-control">-->
-<!--                    </div>-->
+                    <div class="form-group">
+                        <label for="product_tags">Product Keywords</label>
+                        <input type="text" name="product_tags" class="form-control">
+                    </div>
                     <!-- Product Image -->
                     <div class="form-group">
                         <label for="product_image">Product Image</label>

@@ -6,6 +6,8 @@
  * =======================
  */
 
+$upload_directory = "uploads";
+
 // Set Message
 function set_message($msg)
 {
@@ -29,6 +31,14 @@ function display_message()
 function redirect($loc)
 {
     header("Location: $loc");
+}
+
+// Display Image
+function display_image($img)
+{
+    global $upload_directory;
+
+    return $upload_directory . DS . $img;
 }
 
 /*
@@ -479,11 +489,12 @@ function add_product()
     if (isset($_POST['publish'])) {
         $product_name = escape_string($_POST['product_name']);
         $product_shortDes = escape_string($_POST['product_shortDes']);
+        $product_cat_id = escape_string($_POST['product_cat_id']);
         $product_des = escape_string($_POST['product_description']);
         $product_price = escape_string($_POST['product_price']);
-        $product_cat_id = escape_string($_POST['product_cat_id']);
-        $product_brand = escape_string($_POST['product_brand']);
+        $product_old_price = escape_string($_POST['product_old_price']);
         $product_quantity = escape_string($_POST['product_quantity']);
+        $product_brand = escape_string($_POST['product_brand']);
         $product_tags = escape_string($_POST['product_tags']);
 
         $product_image = escape_string($_FILES['product_image']['name']);
@@ -492,10 +503,33 @@ function add_product()
         // The uploaded image is moved to the images folder
         move_uploaded_file($product_image_tmp,UPLOAD_DIRECTORY . DS . $product_image);
 
-        $get_product_query = query("INSERT INTO products (product_name, product_shortDes, product_des, product_price, product_quantity, product_image, product_brand) VALUES ('{$product_name}', '{$product_shortDes}', '{$product_des}', '{$product_quantity}', '{$product_price}', '{$product_image}', '{$product_brand}')");
+        $get_product_query = query(" INSERT INTO products (product_name, product_cat_id, product_des, product_shortDes, product_price, product_old_price, product_quantity, product_image, product_brand, product_tags) VALUES ('{$product_name}', '{$product_cat_id}', '{$product_des}', '{$product_shortDes}', '{$product_price}', '{$product_old_price}', '{$product_quantity}', '{$product_image}', '{$product_brand}', '{$product_tags}') ");
         $last_id = last_id();
         confirm($get_product_query);
         set_message('Adding a new product and the id is: ' . $last_id);
         redirect('index.php?products');
     }
+}
+
+/*
+ * =======================
+ * Display Categories in the add product
+ * =======================
+ */
+
+function display_categories_in_add_product_page()
+{
+
+    $cat_query = query("SELECT * FROM categories");
+    confirm($cat_query);
+
+    while ($row = fetch_array($cat_query)) {
+
+        $categories = <<<DELIMETER
+            <option value="{$row['cat_id']}">{$row['cat_name']}</option>
+        DELIMETER;
+
+        echo $categories;
+    }
+
 }
