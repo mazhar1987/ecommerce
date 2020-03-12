@@ -1,5 +1,7 @@
 <?php
 
+$uploads_directory = "uploads";
+
 /*
  * =======================
  * General Helper Function
@@ -32,12 +34,11 @@ function redirect($loc)
 }
 
 // Display Image
-$upload_directory = "uploads";
 function display_image($img)
 {
-    global $upload_directory;
+    global $uploads_directory;
 
-    return $upload_directory . DS . $img;
+    return $uploads_directory . DS . $img;
 }
 
 /*
@@ -92,11 +93,12 @@ function get_products()
 
     while($row = mysqli_fetch_array($product_query))
     {
+        $display_image = display_image($row['product_image']);
         $product = <<<DELIMETER
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
                     <a href="product-details.php?id={$row['product_id']}">
-                        <img src="{$row['product_image']}" alt="{$row['product_name']}">
+                        <img src="../resources/{$display_image}" alt="{$row['product_name']}">
                     </a>                    
                     <div class="caption">
                         <h4><a href="product-details.php?id={$row['product_id']}">{$row['product_name']}</a></h4>
@@ -136,10 +138,11 @@ function get_products_in_category_page()
 
     while($row = mysqli_fetch_array($get_cat_product_query))
     {
+        $display_image = display_image($row['product_image']);
         $cat_product = <<<DELIMETER
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="{$row['product_image']}" alt="{$row['product_name']}">
+                    <img src="../resources/{$display_image}" alt="{$row['product_name']}">
                     <div class="caption">
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
@@ -164,10 +167,11 @@ function get_products_in_shop_page()
 
     while($row = mysqli_fetch_array($get_shop_product_query))
     {
+        $display_image = display_image($row['product_image']);
         $shop_product = <<<DELIMETER
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="{$row['product_image']}" alt="{$row['product_name']}">
+                    <img src="../resources/{$display_image}" alt="{$row['product_name']}">
                     <div class="caption">
                         <h4>{$row['product_name']}</h4>
                         <p>{$row['product_shortDes']}</p>
@@ -466,6 +470,7 @@ function display_products()
     while ($row = fetch_array($get_product_query)) {
 
         $category_name = display_product_cat_title($row['product_cat_id']);
+        $display_image = display_image($row['product_image']);
 
         $product = <<<DELIMETER
             <tr>
@@ -473,7 +478,7 @@ function display_products()
                 <td>{$row['product_name']}</td>
                 <td>
                     <a href="index.php?edit_product&id={$row['product_id']}">
-                        <img width="100" src="{$row['product_image']}" alt="">
+                        <img width="100" src="../../resources/{$display_image}" alt="">
                     </a>
                 </td>
                 <td>{$category_name}</td>
