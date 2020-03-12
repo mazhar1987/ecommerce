@@ -6,8 +6,6 @@
  * =======================
  */
 
-$upload_directory = "uploads";
-
 // Set Message
 function set_message($msg)
 {
@@ -34,6 +32,7 @@ function redirect($loc)
 }
 
 // Display Image
+$upload_directory = "uploads";
 function display_image($img)
 {
     global $upload_directory;
@@ -116,7 +115,7 @@ function get_products()
                             <span class="glyphicon glyphicon-star-empty"></span>
                         </p>
                     </div>
-                    <div class="action" style="display: inline-block;width: 100%;padding-left: 8px;padding-right: 8px;">
+                    <div class="action">
                         <a href="product-details.php?id={$row['product_id']}" target="_blank" class="btn btn-primary pull-left">View Details</a>
                         <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-danger pull-right">Add to Cart</a>
                     </div>
@@ -449,6 +448,16 @@ function display_orders()
  * =======================
  */
 
+function display_product_cat_title($product_cat_id)
+{
+    $get_product_cat_title = query("SELECT * FROM categories WHERE cat_id= '{$product_cat_id}' ");
+    confirm($get_product_cat_title);
+
+    while ($row = fetch_array($get_product_cat_title)) {
+        return $row['cat_name'];
+    }
+}
+
 function display_products()
 {
     $get_product_query = query("SELECT * FROM products");
@@ -456,15 +465,21 @@ function display_products()
 
     while ($row = fetch_array($get_product_query)) {
 
+        $category_name = display_product_cat_title($row['product_cat_id']);
+
         $product = <<<DELIMETER
             <tr>
                 <td>{$row['product_id']}</td>
                 <td>{$row['product_name']}</td>
-                <td><a href="index.php?edit_product&id={$row['product_id']}"><img width="100" src="{$row['product_image']}" alt=""></a></td>
-                <td>{$row['product_cat_id']}</td>
+                <td>
+                    <a href="index.php?edit_product&id={$row['product_id']}">
+                        <img width="100" src="{$row['product_image']}" alt="">
+                    </a>
+                </td>
+                <td>{$category_name}</td>
                 <td>&#36;{$row['product_price']}</td>
                 <td>{$row['product_quantity']}</td>
-                <td>
+                <td>    
                     <a class="btn btn-success" href="index.php?edit_product&id={$row['product_id']}"><span class="glyphicon glyphicon-edit"></span></a>                 
                     <a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
