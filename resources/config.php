@@ -10,6 +10,7 @@ define('DS', DIRECTORY_SEPARATOR);
 // Define directory path
 define('TEMPLATE_FRONT', __DIR__ . DS . 'templates/front');
 define('TEMPLATE_BACK', __DIR__ . DS . 'templates/back');
+define('UPLOAD_DIRECTORY', __DIR__ . DS . 'uploads');
 
 // DB connect with constant
 define('DB_HOST', 'localhost');
