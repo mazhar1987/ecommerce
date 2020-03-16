@@ -553,3 +553,47 @@ function display_categories_in_add_product_page()
     }
 
 }
+
+/*
+ * =======================
+ * Edit product in admin
+ * =======================
+ */
+
+function edit_product()
+{
+
+
+    if (isset($_POST['update'])) {
+        $product_name = escape_string($_POST['product_name']);
+        $product_shortDes = escape_string($_POST['product_shortDes']);
+        $product_cat_id = escape_string($_POST['product_cat_id']);
+        $product_des = escape_string($_POST['product_description']);
+        $product_price = escape_string($_POST['product_price']);
+        $product_old_price = escape_string($_POST['product_old_price']);
+        $product_quantity = escape_string($_POST['product_quantity']);
+        $product_brand = escape_string($_POST['product_brand']);
+        $product_tags = escape_string($_POST['product_tags']);
+
+        $product_image = escape_string($_FILES['product_image']['name']);
+        $product_image_tmp = escape_string($_FILES['product_image']['tmp_name']);
+
+        // Check product image field is empty
+        if (empty($product_image)) {
+            $get_image = query("SELECT product_image FROM products WHERE product_id =" . $_GET['id'] . " ");
+            confirm($get_image);
+
+            while ($row = fetch_array($get_image)) {
+                $product_image = $row['product_image'];
+            }
+        }
+
+        // The uploaded image is moved to the images folder
+        move_uploaded_file($product_image_tmp,UPLOAD_DIRECTORY . DS . $product_image);
+
+        $get_product_query = query(" UPDATE products SET product_name = '{$product_name}', product_cat_id = '{$product_cat_id}', product_des = '{$product_des}', product_shortDes = '{$product_shortDes}', product_price = '{$product_price}', product_old_price = '{$product_old_price}', product_quantity = '{$product_quantity}', product_image = '{$product_image}', product_brand = '{$product_brand}', product_tags = '{$product_tags}' WHERE product_id =" . escape_string($_GET['id']));
+        confirm($get_product_query);
+        set_message('The product has been updated!');
+        redirect('index.php?products');
+    }
+}
