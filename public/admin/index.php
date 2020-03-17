@@ -13,6 +13,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container-fluid">
 
+        <h4 class="text-center alert-success"><?php display_message(); ?></h4>
         <?php
 
         if ($_SERVER['REQUEST_URI'] == "/practice/php/ecommerce/public/admin/" || $_SERVER['REQUEST_URI'] == "/practice/php/ecommerce/public/admin/index.php") {
