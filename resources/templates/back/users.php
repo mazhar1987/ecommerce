@@ -10,6 +10,7 @@
                 <i class="fa fa-dashboard"></i> Users
             </li>
         </ol>
+        <h4 class="text-center alert-success"><?php display_message(); ?></h4>
     </div>
 </div>
 <div class="row">

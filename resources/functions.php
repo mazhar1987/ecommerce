@@ -597,3 +597,47 @@ function edit_product()
         redirect('index.php?products');
     }
 }
+
+/*
+ * =======================
+ * Categories in admin
+ * =======================
+ */
+
+function display_category_in_admin()
+{
+    $display_cat_query = query("SELECT * FROM categories");
+    confirm($display_cat_query);
+
+    while ($row = fetch_array($display_cat_query)) {
+        $cat_id = $row['cat_id'];
+        $cat_name = $row['cat_name'];
+
+        $categories = <<<DELIMETER
+            <tr>
+                <td>{$cat_id}</td>
+                <td>{$cat_name}</td>
+                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_category.php?id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>
+        DELIMETER;
+
+        echo $categories;
+    }
+}
+
+function add_category()
+{
+    if (isset($_POST['add_category'])) {
+        $cat_name = escape_string($_POST['cat_name']);
+
+        if (empty($cat_name) || $cat_name == " ") {
+            set_message ("The field cannot be empty.");
+        } else {
+
+            $add_cat_query = query("INSERT INTO categories(cat_name) VALUES('{$cat_name}') ");
+            confirm($add_cat_query);
+
+            set_message("Added the category successfully!");
+        }
+    }
+}
