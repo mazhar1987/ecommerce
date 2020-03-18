@@ -629,14 +629,16 @@ function add_category()
 {
     if (isset($_POST['add_category'])) {
         $cat_name = escape_string($_POST['cat_name']);
-        $add_cat_query = query("INSERT INTO categories(cat_name) VALUES('{$cat_name}') ");
-        confirm($add_cat_query);
 
-        if (mysqli_affected_rows($add_cat_query) == 0) {
-            set_message("Does not add a category");
+        if (empty($cat_name) || $cat_name == " ") {
+            set_message ("The field cannot be empty.");
+        } else {
+
+            $add_cat_query = query("INSERT INTO categories(cat_name) VALUES('{$cat_name}') ");
+            confirm($add_cat_query);
+
+            set_message("Added the category successfully!");
+            redirect("index.php?categories");
         }
-
-        set_message("Added the category successfully!");
-        redirect("index.php?categories");
     }
 }
