@@ -638,7 +638,6 @@ function add_category()
             confirm($add_cat_query);
 
             set_message("Added the category successfully!");
-            redirect("index.php?categories");
         }
     }
 }
