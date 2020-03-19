@@ -23,6 +23,7 @@
                 <th>Order ID</th>
                 <th>Product Price</th>
                 <th>Product Quantity</th>
+                <th>Action</th>
             </tr>
             </thead>
 
