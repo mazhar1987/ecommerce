@@ -641,3 +641,117 @@ function add_category()
         }
     }
 }
+
+/*
+ * =======================
+ * Users in admin
+ * =======================
+ */
+
+function display_user_in_admin()
+{
+    $display_user_query = query("SELECT * FROM users");
+    confirm($display_user_query);
+
+    while ($row = fetch_array($display_user_query)) {
+        $user_id = $row['user_id'];
+        $username = $row['username'];
+        $user_password = $row['user_password'];
+        $user_firstname = $row['user_firstname'];
+        $user_lastname = $row['user_lastname'];
+        $user_email = $row['user_email'];
+
+        $display_image = display_image($row['user_image']);
+
+        $users = <<<DELIMETER
+            <tr>
+                <td>{$user_id}</td>
+                <td>
+                    <img width="100" src="../../resources/{$display_image}" alt="">
+                </td>
+                <td>{$username}</td>
+                <td>{$user_password}</td>
+                <td>{$user_firstname}</td>
+                <td>{$user_lastname}</td>
+                <td>{$user_email}</td>
+                <td>                        
+                    <a class="btn btn-success" href="index.php?edit_user&id={$user_id}"><span class="glyphicon glyphicon-edit"></span></a>                 
+                    <a class="btn btn-danger" href="../../resources/templates/back/delete_user.php?id={$user_id}"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+        DELIMETER;
+
+        echo $users;
+
+    }
+}
+
+
+/*
+ * =======================
+ * Add User in admin
+ * =======================
+ */
+
+function add_user()
+{
+    if (isset($_POST['add_user'])) {
+        $username = escape_string($_POST['username']);
+        $user_password = escape_string($_POST['user_password']);
+        $user_firstname = escape_string($_POST['user_firstname']);
+        $user_lastname = escape_string($_POST['user_lastname']);
+        $user_email = escape_string($_POST['user_email']);
+
+        $user_image = escape_string($_FILES['user_image']['name']);
+        $user_image_tmp = escape_string($_FILES['user_image']['tmp_name']);
+
+        // The uploaded image is moved to the images folder
+        move_uploaded_file($user_image_tmp,UPLOAD_DIRECTORY . DS . $user_image);
+
+        $add_user_query = query(" INSERT INTO users (username, user_password, user_firstname, user_lastname, user_email, user_image) VALUES ('{$username}', '{$user_password}', '{$user_firstname}', '{$user_lastname}', '{$user_email}', '{$user_image}') ");
+        $last_id = last_id();
+        confirm($add_user_query);
+        set_message('Adding a new user and the id is: ' . $last_id);
+        redirect('index.php?users');
+    }
+}
+
+/*
+ * =======================
+ * Edit user in admin
+ * =======================
+ */
+
+function edit_user()
+{
+
+
+    if (isset($_POST['update'])) {
+        $username = escape_string($_POST['username']);
+        $user_password = escape_string($_POST['user_password']);
+        $user_firstname = escape_string($_POST['user_firstname']);
+        $user_lastname = escape_string($_POST['user_lastname']);
+        $user_email = escape_string($_POST['user_email']);
+
+        $user_image = escape_string($_FILES['user_image']['name']);
+        $user_image_tmp = escape_string($_FILES['user_image']['tmp_name']);
+
+        // Check product image field is empty
+        if (empty($user_image)) {
+            $get_image = query("SELECT user_image FROM users WHERE user_id =" . $_GET['id'] . " ");
+            confirm($get_image);
+
+            while ($row = fetch_array($get_image)) {
+                $user_image = $row['user_image'];
+            }
+        }
+
+        // The uploaded image is moved to the images folder
+        move_uploaded_file($user_image_tmp,UPLOAD_DIRECTORY . DS . $user_image);
+
+        $get_user_query = query(" UPDATE users SET username = '{$username}' WHERE user_id =" . escape_string($_GET['id']));
+        confirm($get_user_query);
+        set_message('The user has been updated!');
+        redirect('index.php?users');
+    }
+}
