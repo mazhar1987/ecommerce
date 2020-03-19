@@ -9,13 +9,13 @@
                 <i class="fa fa-dashboard"></i> Categories
             </li>
         </ol>
-        <h4 class="text-center alert-success"><?php display_message(); ?></h4>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-4">
+                <p class="text-center alert-success"><?php display_message(); ?></p>
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="category-title">Title</label>
