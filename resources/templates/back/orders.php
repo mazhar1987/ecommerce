@@ -1,7 +1,6 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="text-center alert-success"><?php display_message(); ?></h3>
         <h1 class="page-header">
             Dashboard <small>Orders</small>
         </h1>
@@ -10,7 +9,6 @@
                 <i class="fa fa-dashboard"></i> Orders
             </li>
         </ol>
-        <h4 class="text-center alert-success"><?php display_message(); ?></h4>
     </div>
 </div>
 <div class="row">

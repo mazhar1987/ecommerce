@@ -755,3 +755,35 @@ function edit_user()
         redirect('index.php?users');
     }
 }
+
+/*
+ * =======================
+ * Display reports in admin
+ * =======================
+ */
+
+function display_reports()
+{
+
+    $reports_query = query("SELECT * FROM reports");
+    confirm($reports_query);
+
+    while ($row = fetch_array($reports_query)) {
+
+        $report = <<<DELIMETER
+            <tr>
+                <td>{$row['report_id']}</td>
+                <td>{$row['product_id']}</td>
+                <td>{$row['product_name']}</td>
+                <td>{$row['order_id']}</td>
+                <td>{$row['product_price']}</td>
+                <td>{$row['product_quantity']}</td>
+            </tr>        
+        DELIMETER;
+
+        echo $report;
+
+
+    }
+
+}
