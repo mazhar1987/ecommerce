@@ -21,32 +21,38 @@ add_user();
         <form action="" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="username">User Name </label>
-                        <input type="text" name="username" class="form-control">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="username">User Name </label>
+                            <input type="text" name="username" class="form-control">                            
+                        </div>
+                        <div class="col-md-6">
+                            <label for="user_password">Password</label>
+                            <input type="password" name="user_password" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control">
-                    </div>
-                    <div class="form-group">
+                    <div class="form-group row">
+                        <div class="col-md-6">
                             <label for="user_firstname">First Name</label>
                             <input type="text" name="user_firstname" class="form-control">
-                    </div>
-                    <div class="form-group">
+                        </div>
+                        <div class="col-md-6">
                             <label for="user_lastname">Last Name</label>
                             <input type="text" name="user_lastname" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
+                        <div class="col-md-6">
                             <label for="user_email">Email</label>
                             <input type="email" name="user_email" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="user_image">User Image</label>
+                            <input type="file" name="user_image" class="form-control">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="user_image">User Image</label>
-                        <input type="file" name="user_image">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="add_user" class="btn btn-primary btn-lg" value="Add User">
+                        <input type="submit" name="add_user" class="btn btn-primary btn-lg btn-block" value="Add User">
                     </div>
                 </div><!--Main Content-->
             </div>

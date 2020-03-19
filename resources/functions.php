@@ -667,7 +667,7 @@ function display_user_in_admin()
             <tr>
                 <td>{$user_id}</td>
                 <td>
-                    <img width="100" src="../../resources/{$display_image}" alt="">
+                    <img width="50" src="../../resources/{$display_image}" alt="">
                 </td>
                 <td>{$username}</td>
                 <td>{$user_password}</td>
@@ -749,8 +749,8 @@ function edit_user()
         // The uploaded image is moved to the images folder
         move_uploaded_file($user_image_tmp,UPLOAD_DIRECTORY . DS . $user_image);
 
-        $get_user_query = query(" UPDATE users SET username = '{$username}' WHERE user_id =" . escape_string($_GET['id']));
-        confirm($get_user_query);
+        $edit_user_query = query(" UPDATE users SET username = '{$username}', user_password = '{$user_password}', user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}', user_email = '{$user_email}', user_image = '{$user_image}' WHERE user_id =" . escape_string($_GET['id']));
+        confirm($edit_user_query);
         set_message('The user has been updated!');
         redirect('index.php?users');
     }
