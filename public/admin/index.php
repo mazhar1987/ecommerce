@@ -52,6 +52,10 @@ if (!isset($_SESSION['username'])) {
             include_once(TEMPLATE_BACK . DS . 'edit_product.php');
         } else if (isset($_GET['users'])) {
             include_once(TEMPLATE_BACK . DS . 'users.php');
+        } else if (isset($_GET['add_user'])) {
+            include_once(TEMPLATE_BACK . DS . 'add_user.php');
+        } else if (isset($_GET['edit_user'])) {
+            include_once(TEMPLATE_BACK . DS . 'edit_user.php');
         }
 
         ?>
