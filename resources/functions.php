@@ -812,10 +812,9 @@ function add_slide()
             move_uploaded_file($slider_image_tmp, UPLOAD_DIRECTORY . DS . $slider_image);
 
             $add_slider_query = query(" INSERT INTO sliders (slider_title, slider_image) VALUES ('{$slider_title}', '{$slider_image}') ");
-            $last_id = last_id();
             confirm($add_slider_query);
-            set_message('Adding a slider item and the id is: ' . $last_id);
-            redirect('index.php?sliders');
+            set_message('Adding a slider item and the id is: ');
+            redirect('index.php?slides');
         }
     }
 
@@ -837,7 +836,7 @@ function get_active_slide()
 
         $slide_active = <<<DELIMETER
             <div class="item active">
-                <img class="slide-image" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+                <img class="slide-image" src="../resources/{$display_image}" alt="{$row['slider_title']}">
             </div>
         DELIMETER;
 
@@ -857,7 +856,7 @@ function get_slides()
 
         $slides = <<<DELIMETER
             <div class="item">
-                <img class="slide-image" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+                <img class="slide-image" src="../resources/{$display_image}" alt="{$row['slider_title']}">
             </div>
         DELIMETER;
 
