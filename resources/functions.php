@@ -799,6 +799,25 @@ function display_reports()
 
 function add_slide()
 {
+    if (isset($_POST['add_slider'])) {
+        $slider_title = escape_string($_POST['slider_title']);
+        $slider_image = escape_string($_FILES['slider_image']['name']);
+        $slider_image_tmp = escape_string($_FILES['slider_image']['tmp_name']);
+
+        if (empty($slider_title) && empty($slider_image)) {
+            echo "<p class='bg-danger'>The fields can not empty.</p>";
+        } else {
+
+            // The uploaded image is moved to the images folder
+            move_uploaded_file($slider_image_tmp, UPLOAD_DIRECTORY . DS . $slider_image);
+
+            $add_slider_query = query(" INSERT INTO sliders (slider_title, slider_image) VALUES ('{$slider_title}', '{$slider_image}') ");
+            $last_id = last_id();
+            confirm($add_slider_query);
+            set_message('Adding a slider item and the id is: ' . $last_id);
+            redirect('index.php?sliders');
+        }
+    }
 
 }
 
@@ -809,7 +828,22 @@ function get_current_slide()
 
 function get_active_slide()
 {
+    $active_slide_query = query("SELECT * FROM sliders ORDER BY slider_id DESC LIMIT 1");
+    confirm($active_slide_query);
 
+    while ($row = fetch_array($active_slide_query)) {
+
+        $display_image = display_image($row['slider_image']);
+
+        $slide_active = <<<DELIMETER
+            <div class="item active">
+                <img class="slide-image" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+            </div>
+        DELIMETER;
+
+        echo $slide_active;
+
+    }
 }
 
 function get_slides()
@@ -819,9 +853,11 @@ function get_slides()
 
     while ($row = fetch_array($get_slide_query)) {
 
+        $display_image = display_image($row['slider_image']);
+
         $slides = <<<DELIMETER
             <div class="item">
-                <img class="slide-image" src="{$row['slider_image']}" alt="{$row['slider_title']}">
+                <img class="slide-image" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
             </div>
         DELIMETER;
 
