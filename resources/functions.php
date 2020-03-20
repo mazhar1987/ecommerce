@@ -133,7 +133,7 @@ function get_products()
 function get_products_in_category_page()
 {
 
-    $get_cat_product_query = query("SELECT * FROM products WHERE product_cat_id =". escape_string($_GET['id']) ." ");
+    $get_cat_product_query = query("SELECT * FROM products WHERE product_quantity >= 1 AND  product_cat_id =". escape_string($_GET['id']) ." ");
     confirm($get_cat_product_query);
 
     while($row = mysqli_fetch_array($get_cat_product_query))
@@ -162,7 +162,7 @@ function get_products_in_category_page()
 function get_products_in_shop_page()
 {
 
-    $get_shop_product_query = query("SELECT * FROM products");
+    $get_shop_product_query = query("SELECT * FROM products WHERE product_quantity >= 1");
     confirm($get_shop_product_query);
 
     while($row = mysqli_fetch_array($get_shop_product_query))
