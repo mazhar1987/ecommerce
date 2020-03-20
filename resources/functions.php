@@ -813,16 +813,31 @@ function add_slide()
 
             $add_slider_query = query(" INSERT INTO sliders (slider_title, slider_image) VALUES ('{$slider_title}', '{$slider_image}') ");
             confirm($add_slider_query);
-            set_message('Adding a slider item and the id is: ');
+            set_message('Adding a slider item.');
             redirect('index.php?slides');
         }
     }
 
 }
 
-function get_current_slide()
+function get_current_slide_in_admin()
 {
+    $current_slide_query = query("SELECT * FROM sliders ORDER BY slider_id DESC LIMIT 1");
+    confirm($current_slide_query);
 
+    while ($row = fetch_array($current_slide_query)) {
+
+        $display_image = display_image($row['slider_image']);
+
+        $slide_current = <<<DELIMETER
+            <div class="item active">
+                <img class="slide-image img-responsive" width="500" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+            </div>
+        DELIMETER;
+
+        echo $slide_current;
+
+    }
 }
 
 function get_active_slide()

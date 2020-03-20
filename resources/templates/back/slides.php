@@ -1,6 +1,4 @@
 
-<?php add_slide(); ?>
-
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
@@ -16,7 +14,9 @@
 
 <div class="row">
     <div class="col-md-4">
+        <p class="text-center bg-success"><?php display_message(); ?></p>
         <form action="" method="post" enctype="multipart/form-data">
+            <?php add_slide(); ?>
             <div class="form-group">
                 <label for="slider_title">Slide Title</label>
                 <input type="text" name="slider_title" class="form-control">
@@ -33,6 +33,7 @@
     <div class="col-md-8">
         <h3 class="text-center">Slides Available</h3>
         <hr>
+        <?php get_current_slide_in_admin(); ?>
     </div>
 </div>
 
