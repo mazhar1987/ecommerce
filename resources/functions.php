@@ -790,3 +790,47 @@ function display_reports()
     }
 
 }
+
+/*
+ * =======================
+ * Slider
+ * =======================
+ */
+
+function add_slide()
+{
+
+}
+
+function get_current_slide()
+{
+
+}
+
+function get_active_slide()
+{
+
+}
+
+function get_slides()
+{
+    $get_slide_query = query("SELECT * FROM sliders");
+    confirm($get_slide_query);
+
+    while ($row = fetch_array($get_slide_query)) {
+
+        $slides = <<<DELIMETER
+            <div class="item">
+                <img class="slide-image" src="{$row['slider_image']}" alt="{$row['slider_title']}">
+            </div>
+        DELIMETER;
+
+        echo $slides;
+
+    }
+}
+
+function get_slide_thumbnails()
+{
+
+}
