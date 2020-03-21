@@ -895,7 +895,7 @@ function get_slide_thumbnails()
             <br>
             <div class="btn-group"> 
                 <a href="index.php?edit_slider&id={$row['slider_id']}" class="btn btn-primary" role="button">Edit</a>
-                <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger" role="button">Delete</a>
+                <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger delete-slider-item" role="button">Delete</a>
             </div>
         </div>
         DELIMETER;
