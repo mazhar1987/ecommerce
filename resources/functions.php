@@ -88,7 +88,7 @@ function fetch_array($result)
 function get_products()
 {
 
-    $product_query = query("SELECT * FROM products");
+    $product_query = query("SELECT * FROM products WHERE product_quantity >= 1");
     confirm($product_query);
 
     while($row = mysqli_fetch_array($product_query))
@@ -133,7 +133,7 @@ function get_products()
 function get_products_in_category_page()
 {
 
-    $get_cat_product_query = query("SELECT * FROM products WHERE product_cat_id =". escape_string($_GET['id']) ." ");
+    $get_cat_product_query = query("SELECT * FROM products WHERE product_quantity >= 1 AND  product_cat_id =". escape_string($_GET['id']) ." ");
     confirm($get_cat_product_query);
 
     while($row = mysqli_fetch_array($get_cat_product_query))
@@ -162,7 +162,7 @@ function get_products_in_category_page()
 function get_products_in_shop_page()
 {
 
-    $get_shop_product_query = query("SELECT * FROM products");
+    $get_shop_product_query = query("SELECT * FROM products WHERE product_quantity >= 1");
     confirm($get_shop_product_query);
 
     while($row = mysqli_fetch_array($get_shop_product_query))
@@ -435,7 +435,7 @@ function display_orders()
                 <td>{$row['order_transaction']}</td>
                 <td>{$row['order_currency_code']}</td>
                 <td>{$row['order_status']}</td>
-                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td><a class="btn btn-danger delete-order" href="index.php?delete_order_id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
             </tr>        
         DELIMETER;
 
@@ -486,7 +486,7 @@ function display_products()
                 <td>{$row['product_quantity']}</td>
                 <td>    
                     <a class="btn btn-success" href="index.php?edit_product&id={$row['product_id']}"><span class="glyphicon glyphicon-edit"></span></a>                 
-                    <a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-danger delete-product" href="index.php?delete_product_id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>       
         DELIMETER;
@@ -617,7 +617,7 @@ function display_category_in_admin()
             <tr>
                 <td>{$cat_id}</td>
                 <td>{$cat_name}</td>
-                <td><a class="btn btn-danger" href="../../resources/templates/back/delete_category.php?id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td><a class="btn btn-danger delete-category" href="index.php?delete_category_id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
             </tr>
         DELIMETER;
 
@@ -676,7 +676,7 @@ function display_user_in_admin()
                 <td>{$user_email}</td>
                 <td>                        
                     <a class="btn btn-success" href="index.php?edit_user&id={$user_id}"><span class="glyphicon glyphicon-edit"></span></a>                 
-                    <a class="btn btn-danger" href="../../resources/templates/back/delete_user.php?id={$user_id}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-danger delete-user" href="index.php?delete_user_id={$user_id}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>
         DELIMETER;
@@ -779,7 +779,7 @@ function display_reports()
                 <td>{$row['product_price']}</td>
                 <td>{$row['product_quantity']}</td>
                 <td>                                        
-                    <a class="btn btn-danger" href="../../resources/templates/back/delete_report.php?id={$row['report_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-danger delete-report" href="index.php?delete_report_id={$row['report_id']}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>        
         DELIMETER;
@@ -789,4 +789,149 @@ function display_reports()
 
     }
 
+}
+
+/*
+ * =======================
+ * Slider
+ * =======================
+ */
+
+function add_slide()
+{
+    if (isset($_POST['add_slider'])) {
+        $slider_title = escape_string($_POST['slider_title']);
+        $slider_image = escape_string($_FILES['slider_image']['name']);
+        $slider_image_tmp = escape_string($_FILES['slider_image']['tmp_name']);
+
+        if (empty($slider_title) && empty($slider_image)) {
+            echo "<p class='bg-danger'>The fields can not empty.</p>";
+        } else {
+
+            // The uploaded image is moved to the images folder
+            move_uploaded_file($slider_image_tmp, UPLOAD_DIRECTORY . DS . $slider_image);
+
+            $add_slider_query = query(" INSERT INTO sliders (slider_title, slider_image) VALUES ('{$slider_title}', '{$slider_image}') ");
+            confirm($add_slider_query);
+            set_message('Adding a slider item.');
+            redirect('index.php?slides');
+        }
+    }
+
+}
+
+function get_current_slide_in_admin()
+{
+    $current_slide_query = query("SELECT * FROM sliders ORDER BY slider_id DESC LIMIT 1");
+    confirm($current_slide_query);
+
+    while ($row = fetch_array($current_slide_query)) {
+
+        $display_image = display_image($row['slider_image']);
+
+        $slide_current = <<<DELIMETER
+            <div class="item active">
+                <img class="slide-image img-responsive img-rounded" width="500" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+            </div>
+        DELIMETER;
+
+        echo $slide_current;
+
+    }
+}
+
+function get_active_slide()
+{
+    $active_slide_query = query("SELECT * FROM sliders ORDER BY slider_id DESC LIMIT 1");
+    confirm($active_slide_query);
+
+    while ($row = fetch_array($active_slide_query)) {
+
+        $display_image = display_image($row['slider_image']);
+
+        $slide_active = <<<DELIMETER
+            <div class="item active">
+                <img class="slide-image" src="../resources/{$display_image}" alt="{$row['slider_title']}">
+            </div>
+        DELIMETER;
+
+        echo $slide_active;
+
+    }
+}
+
+function get_slides()
+{
+    $get_slide_query = query("SELECT * FROM sliders");
+    confirm($get_slide_query);
+
+    while ($row = fetch_array($get_slide_query)) {
+
+        $display_image = display_image($row['slider_image']);
+
+        $slides = <<<DELIMETER
+            <div class="item">
+                <img class="slide-image" src="../resources/{$display_image}" alt="{$row['slider_title']}">
+            </div>
+        DELIMETER;
+
+        echo $slides;
+
+    }
+}
+
+function get_slide_thumbnails()
+{
+    $get_slide_thumb_query = query("SELECT * FROM sliders ORDER BY slider_id DESC");
+    confirm($get_slide_thumb_query);
+
+    while ($row = fetch_array($get_slide_thumb_query)) {
+
+        $display_image = display_image($row['slider_image']);
+
+        $slides = <<<DELIMETER
+        <div class="col-md-2">
+            <div class="thumbnail">
+                <img class="img-responsive" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+                <div class="caption text-center"> 
+                    <h5>{$row['slider_title']}</h5>
+                    <a href="index.php?edit_slider&id={$row['slider_id']}" class="btn btn-primary" role="button">Edit</a>
+                    <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger delete-slider" role="button">Delete</a>
+                </div>
+            </div>
+        </div>
+        DELIMETER;
+
+        echo $slides;
+
+    }
+}
+
+function edit_slider()
+{
+
+    if (isset($_POST['update_slider'])) {
+        $slider_title = escape_string($_POST['slider_title']);
+
+        $slider_image = escape_string($_FILES['slider_image']['name']);
+        $slider_image_tmp = escape_string($_FILES['slider_image']['tmp_name']);
+
+        // Check product image field is empty
+        if (empty($slider_image)) {
+            $get_image = query("SELECT slider_image FROM sliders WHERE slider_id =" . $_GET['id'] . " ");
+            confirm($get_image);
+
+            while ($row = fetch_array($get_image)) {
+                $slider_image = $row['slider_image'];
+            }
+        }
+
+        // The uploaded image is moved to the images folder
+        move_uploaded_file($slider_image_tmp,UPLOAD_DIRECTORY . DS . $slider_image);
+
+        $edit_slider_query = query(" UPDATE sliders SET slider_title = '{$slider_title}', slider_image = '{$slider_image}' WHERE slider_id =" . escape_string($_GET['id']));
+        confirm($edit_slider_query);
+        set_message('The slider item has been updated!');
+        redirect('index.php?slides');
+    }
 }

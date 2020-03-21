@@ -39,24 +39,40 @@ if (!isset($_SESSION['username'])) {
             include_once(TEMPLATE_BACK . DS . 'dashboard_transaction.php');
         }
 
-        if (isset($_GET['orders'])) {
+        if (isset($_GET['slides'])) {
+            include_once(TEMPLATE_BACK . DS . 'slides.php');
+        } else if (isset($_GET['edit_slider'])) {
+            include_once(TEMPLATE_BACK . DS . 'edit_slider.php');
+        } else if (isset($_GET['delete_slider_id'])) {
+            include_once(TEMPLATE_BACK . DS . 'delete_slide.php');
+        } else if (isset($_GET['orders'])) {
             include_once(TEMPLATE_BACK . DS . 'orders.php');
+        } else if (isset($_GET['delete_order_id'])) {
+            include_once(TEMPLATE_BACK . DS . 'delete_order.php');
         } else if (isset($_GET['categories'])) {
             include_once(TEMPLATE_BACK . DS . 'categories.php');
+        } else if (isset($_GET['delete_category_id'])) {
+            include_once(TEMPLATE_BACK . DS . 'delete_category.php');
         } else if (isset($_GET['products'])) {
             include_once(TEMPLATE_BACK . DS . 'products.php');
         } else if (isset($_GET['add_product'])) {
             include_once(TEMPLATE_BACK . DS . 'add_product.php');
         } else if (isset($_GET['edit_product'])) {
             include_once(TEMPLATE_BACK . DS . 'edit_product.php');
+        } else if (isset($_GET['delete_product_id'])) {
+            include_once(TEMPLATE_BACK . DS . 'delete_product.php');
         } else if (isset($_GET['users'])) {
             include_once(TEMPLATE_BACK . DS . 'users.php');
         } else if (isset($_GET['add_user'])) {
             include_once(TEMPLATE_BACK . DS . 'add_user.php');
         } else if (isset($_GET['edit_user'])) {
             include_once(TEMPLATE_BACK . DS . 'edit_user.php');
+        } else if (isset($_GET['delete_user_id'])) {
+            include_once(TEMPLATE_BACK . DS . 'delete_user.php');
         } else if (isset($_GET['reports'])) {
             include_once(TEMPLATE_BACK . DS . 'reports.php');
+        } else if (isset($_GET['delete_report_id'])) {
+            include_once(TEMPLATE_BACK . DS . 'delete_report.php');
         }
 
         ?>

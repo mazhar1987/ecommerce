@@ -11,6 +11,9 @@
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
+                <a href="index.php?slides"><i class="fa fa-fw fa-slideshare"></i> Slider</a>
+            </li>
+            <li>
                 <a href="index.php?products"><i class="fa fa-fw fa-bar-chart-o"></i> Products</a>
             </li>
             <li>
