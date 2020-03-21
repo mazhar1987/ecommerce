@@ -3,17 +3,12 @@
 
 // Check if product is available
 if (isset($_GET['id'])) {
-    $user_has_query = query("SELECT * FROM users WHERE user_id =" . escape_string($_GET['id']) . " ");
-    confirm($user_has_query);
+    $slider_has_query = query("SELECT * FROM sliders WHERE slider_id =" . escape_string($_GET['id']) . " ");
+    confirm($slider_has_query);
 
-    while ($row = fetch_array($user_has_query)) {
-        $user_id = escape_string($row['user_id']);
-        $username = escape_string($row['username']);
-        $user_password = escape_string($row['user_password']);
-        $user_firstname = escape_string($row['user_firstname']);
-        $user_lastname = escape_string($row['user_lastname']);
-        $user_email = escape_string($row['user_email']);
-        $user_image = escape_string($row['user_image']);
+    while ($row = fetch_array($slider_has_query)) {
+        $slider_title = escape_string($row['slider_title']);
+        $slider_image = escape_string($row['slider_image']);
     }
 
     edit_slider();
@@ -42,14 +37,16 @@ if (isset($_GET['id'])) {
             <?php add_slide(); ?>
             <div class="form-group">
                 <label for="slider_title">Slide Title</label>
-                <input type="text" name="slider_title" class="form-control">
+                <input type="text" name="slider_title" class="form-control" value="<?php echo $slider_title; ?>">
             </div>
             <div class="form-group">
                 <label for="slider_image">Slide Image</label>
                 <input type="file" name="slider_image" class="form-control">
+                <br>
+                <img width="200" src="../../resources/<?php echo display_image($slider_image); ?>" alt="<?php echo $slider_title; ?>">
             </div>
             <div class="form-group">
-                <input type="submit" name="add_slider" class="btn btn-primary btn-lg btn-block" value="Add Slider">
+                <input type="submit" name="update_slider" class="btn btn-primary btn-lg btn-block" value="Update">
             </div>
         </form>
     </div>

@@ -891,10 +891,10 @@ function get_slide_thumbnails()
 
         $slides = <<<DELIMETER
         <div class="col-md-2">
-            <img class="img-responsive img-rounded" src="../../resources/{$display_image}" alt="">
+            <img class="img-responsive img-rounded" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
             <br>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary" role="button">Edit</a>
+            <div class="btn-group"> 
+                <a href="index.php?edit_slider&id={$row['slider_id']}" class="btn btn-primary" role="button">Edit</a>
                 <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger" role="button">Delete</a>
             </div>
         </div>
@@ -908,33 +908,28 @@ function get_slide_thumbnails()
 function edit_slider()
 {
 
+    if (isset($_POST['update_slider'])) {
+        $slider_title = escape_string($_POST['slider_title']);
 
-    if (isset($_POST['update'])) {
-        $username = escape_string($_POST['username']);
-        $user_password = escape_string($_POST['user_password']);
-        $user_firstname = escape_string($_POST['user_firstname']);
-        $user_lastname = escape_string($_POST['user_lastname']);
-        $user_email = escape_string($_POST['user_email']);
-
-        $user_image = escape_string($_FILES['user_image']['name']);
-        $user_image_tmp = escape_string($_FILES['user_image']['tmp_name']);
+        $slider_image = escape_string($_FILES['slider_image']['name']);
+        $slider_image_tmp = escape_string($_FILES['slider_image']['tmp_name']);
 
         // Check product image field is empty
-        if (empty($user_image)) {
-            $get_image = query("SELECT user_image FROM users WHERE user_id =" . $_GET['id'] . " ");
+        if (empty($slider_image)) {
+            $get_image = query("SELECT slider_image FROM sliders WHERE slider_id =" . $_GET['id'] . " ");
             confirm($get_image);
 
             while ($row = fetch_array($get_image)) {
-                $user_image = $row['user_image'];
+                $slider_image = $row['slider_image'];
             }
         }
 
         // The uploaded image is moved to the images folder
-        move_uploaded_file($user_image_tmp,UPLOAD_DIRECTORY . DS . $user_image);
+        move_uploaded_file($slider_image_tmp,UPLOAD_DIRECTORY . DS . $slider_image);
 
-        $edit_user_query = query(" UPDATE users SET username = '{$username}', user_password = '{$user_password}', user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}', user_email = '{$user_email}', user_image = '{$user_image}' WHERE user_id =" . escape_string($_GET['id']));
-        confirm($edit_user_query);
-        set_message('The user has been updated!');
-        redirect('index.php?users');
+        $edit_slider_query = query(" UPDATE sliders SET slider_title = '{$slider_title}', slider_image = '{$slider_image}' WHERE slider_id =" . escape_string($_GET['id']));
+        confirm($edit_slider_query);
+        set_message('The slider item has been updated!');
+        redirect('index.php?slides');
     }
 }

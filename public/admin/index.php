@@ -41,6 +41,8 @@ if (!isset($_SESSION['username'])) {
 
         if (isset($_GET['slides'])) {
             include_once(TEMPLATE_BACK . DS . 'slides.php');
+        } else if (isset($_GET['edit_slider'])) {
+            include_once(TEMPLATE_BACK . DS . 'edit_slider.php');
         } else if (isset($_GET['delete_slider_id'])) {
             include_once(TEMPLATE_BACK . DS . 'delete_slide.php');
         } else if (isset($_GET['orders'])) {
