@@ -88,9 +88,81 @@ function fetch_array($result)
 function get_products()
 {
 
-    $product_query = query("SELECT * FROM products WHERE product_quantity >= 1");
+    $product_row_count_query = query("SELECT * FROM products");
+    confirm($product_row_count_query);
+
+    // For pagination
+    $num_of_rows = mysqli_num_rows($product_row_count_query);
+
+    if (isset($_GET['page'])) {
+        $page = preg_replace('#[^0-9]#', '', $_GET['page']);
+    } else {
+        $page = 1;
+    }
+
+    $show_per_page = 3;
+    $last_page = ceil($num_of_rows / $show_per_page);
+    $middleNums = '';
+    $addition1 = $page + 1;
+    $addition2 = $page + 2;
+    $subtraction1 = $page - 1;
+    $subtraction2 = $page - 2;
+
+    if ($page < 1) {
+        $page = 1;
+    } else if ($page > $last_page) {
+        $page = $last_page;
+    }
+
+    if ($page == 1) {
+        $middleNums .= '<li class="page-item active"><a>' .$page. '</a></li>';
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$addition1.'">' .$addition1. '</a></li>';
+    } else if ($page == $last_page) {
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$subtraction1.'">' .$subtraction1. '</a></li>';
+        $middleNums .= '<li class="page-item active"><a>' .$page. '</a></li>';
+    } else if ($page > 2 && $page < ($last_page - 1)) {
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$subtraction2.'">' .$subtraction2. '</a></li>';
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$subtraction1.'">' .$subtraction1. '</a></li>';
+        $middleNums .= '<li class="page-item active"><a>' .$page. '</a></li>';
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$addition1.'">' .$addition1. '</a></li>';
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$addition2.'">' .$addition2. '</a></li>';
+    } else if ($page > 1 && $page < $last_page) {
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page= '.$subtraction1.'">' .$subtraction1. '</a></li>';
+        $middleNums .= '<li class="page-item active"><a>' .$page. '</a></li>';
+        $middleNums .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$addition1.'">' .$addition1. '</a></li>';
+    }
+
+    // This line sets the "LIMIT" range... the 2 values we place to choose a range of rows from database in our query
+    $limit = 'LIMIT ' . ($page - 1) * $show_per_page . ',' . $show_per_page;
+
+    $product_query = query("SELECT * FROM products $limit");
     confirm($product_query);
 
+    $outputPagination = ""; // Initialize the pagination output variable
+
+//    if ($last_page != 1) {
+//        echo "Page $page of $last_page";
+//    }
+
+    // If we are not on page one we place the back link
+    if ($page != 1) {
+        $prev = $page - 1;
+        $outputPagination .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$prev.'">Prev</a></li>';
+    }
+
+    // Lets append all our links to this variable that we can use this output pagination
+
+    $outputPagination .= $middleNums;
+
+
+    // Lets append all our links to this variable that we can use this output pagination
+    if ($page != $last_page) {
+        $next = $page + 1;
+        $outputPagination .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].'?page='.$next.'">Next</a></li>';
+    }
+
+
+    // Display Products
     while($row = mysqli_fetch_array($product_query))
     {
         $display_image = display_image($row['product_image']);
@@ -128,7 +200,15 @@ function get_products()
         echo $product;
 
     }
+
+    echo "<div class='text-center'><ul class='pagination'>{$outputPagination}</ul></div>";
 }
+
+/*
+ * =======================================
+ * Get Products Function in category page
+ * =======================================
+ */
 
 function get_products_in_category_page()
 {
@@ -159,6 +239,13 @@ function get_products_in_category_page()
 
     }
 }
+
+/*
+ * =======================================
+ * Get Products Function in shop page
+ * =======================================
+ */
+
 function get_products_in_shop_page()
 {
 

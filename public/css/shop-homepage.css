@@ -41,12 +41,19 @@ body {
 }
 
 .thumbnail {
-    padding: 0;
+    padding:0 0 8px;
+    overflow: hidden;
 }
 
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;
+}
+
+.thumbnail .action {
+    display: block;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 footer {
