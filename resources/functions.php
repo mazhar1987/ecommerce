@@ -435,7 +435,7 @@ function display_orders()
                 <td>{$row['order_transaction']}</td>
                 <td>{$row['order_currency_code']}</td>
                 <td>{$row['order_status']}</td>
-                <td><a class="btn btn-danger" href="index.php?delete_order_id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td><a class="btn btn-danger delete-order" href="index.php?delete_order_id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
             </tr>        
         DELIMETER;
 
@@ -486,7 +486,7 @@ function display_products()
                 <td>{$row['product_quantity']}</td>
                 <td>    
                     <a class="btn btn-success" href="index.php?edit_product&id={$row['product_id']}"><span class="glyphicon glyphicon-edit"></span></a>                 
-                    <a class="btn btn-danger" href="index.php?delete_product_id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-danger delete-product" href="index.php?delete_product_id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>       
         DELIMETER;
@@ -617,7 +617,7 @@ function display_category_in_admin()
             <tr>
                 <td>{$cat_id}</td>
                 <td>{$cat_name}</td>
-                <td><a class="btn btn-danger" href="index.php?delete_category_id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td><a class="btn btn-danger delete-category" href="index.php?delete_category_id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
             </tr>
         DELIMETER;
 
@@ -676,7 +676,7 @@ function display_user_in_admin()
                 <td>{$user_email}</td>
                 <td>                        
                     <a class="btn btn-success" href="index.php?edit_user&id={$user_id}"><span class="glyphicon glyphicon-edit"></span></a>                 
-                    <a class="btn btn-danger" href="index.php?delete_user_id={$user_id}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-danger delete-user" href="index.php?delete_user_id={$user_id}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>
         DELIMETER;
@@ -779,7 +779,7 @@ function display_reports()
                 <td>{$row['product_price']}</td>
                 <td>{$row['product_quantity']}</td>
                 <td>                                        
-                    <a class="btn btn-danger" href="index.php?delete_report_id={$row['report_id']}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-danger delete-report" href="index.php?delete_report_id={$row['report_id']}"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>        
         DELIMETER;
@@ -895,7 +895,7 @@ function get_slide_thumbnails()
             <br>
             <div class="btn-group"> 
                 <a href="index.php?edit_slider&id={$row['slider_id']}" class="btn btn-primary" role="button">Edit</a>
-                <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger delete-slider-item" role="button">Delete</a>
+                <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger delete-slider" role="button">Delete</a>
             </div>
         </div>
         DELIMETER;
