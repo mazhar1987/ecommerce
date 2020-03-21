@@ -891,11 +891,13 @@ function get_slide_thumbnails()
 
         $slides = <<<DELIMETER
         <div class="col-md-2">
-            <img class="img-responsive img-rounded" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
-            <br>
-            <div class="btn-group"> 
-                <a href="index.php?edit_slider&id={$row['slider_id']}" class="btn btn-primary" role="button">Edit</a>
-                <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger delete-slider" role="button">Delete</a>
+            <div class="thumbnail">
+                <img class="img-responsive" src="../../resources/{$display_image}" alt="{$row['slider_title']}">
+                <div class="caption text-center"> 
+                    <h5>{$row['slider_title']}</h5>
+                    <a href="index.php?edit_slider&id={$row['slider_id']}" class="btn btn-primary" role="button">Edit</a>
+                    <a href="index.php?delete_slider_id={$row['slider_id']}" class="btn btn-danger delete-slider" role="button">Delete</a>
+                </div>
             </div>
         </div>
         DELIMETER;
